@@ -1,21 +1,16 @@
 import { defineStore } from "pinia";
 import { ref, Ref } from "vue"
 
-enum Themes {
-	Dark,
-	Light,
-}
+export const useTheme = defineStore("theme", () => {
+	const theme: Ref<boolean> = ref(true)
 
-export const theme = defineStore("theme", () => {
-	const theme: Ref<Themes> = ref(Themes.Dark)
-
-	// setters
-	function set_theme(_theme: Themes) {
-		theme.value = _theme
+	function toggle_theme() {
+		theme.value = !theme.value
+		console.log(theme.value)
 	}
 
 	return {
 		theme,
-		set_theme,
+		toggle_theme,
 	}
 });
