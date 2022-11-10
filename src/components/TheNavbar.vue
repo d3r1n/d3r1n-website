@@ -4,14 +4,14 @@
 			<router-link :to="{name: 'home'}" class="navbar-button" v-html="smile">
 			</router-link>
 
-			<!-- <router-link :to="{name: 'music'}" class="navbar-button" v-html="music">
+			<router-link :to="{name: 'music'}" class="navbar-button" v-html="music">
 			</router-link>
 
 			<router-link :to="{name: 'projects'}" class="navbar-button" v-html="git_branch">
 			</router-link>
 
 			<router-link :to="{name: 'contact'}" class="navbar-button" v-html="at_sign">
-			</router-link> -->
+			</router-link>
 		</span>
 
 		<span class="theme-button" v-on:click="theme.toggle_theme()" v-html="moon">
@@ -41,9 +41,10 @@ const theme = useTheme();
 	align-items: center;
 	justify-content: space-between;
 
-	width: 100%;
+	width: 90%;
 	height: 100%;
 	max-width: 1440px;
+	margin-top: 15px;
 
 	.left-side-buttons {
 		display: flex;
@@ -65,12 +66,22 @@ const theme = useTheme();
 
 		border-radius: 10px;
 
-		margin: 15px 15px 0;
-
 		svg {
 			width: 50px;
 			height: 50px;
 		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.navbar-button {
+		margin-right:15px;
+	}
+
+	.navbar-button:last-child {
+		margin-right: 0;
 	}
 
 	&.light {
@@ -90,6 +101,30 @@ const theme = useTheme();
 			svg {
 				stroke: $dark-foreground;
 			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.navbar {
+		justify-content: space-around;
+
+		.navbar-button, .theme-button {
+			width: 60px;
+			height: 60px;
+
+			svg {
+				width: 60%;
+				height: 60%;
+			}
+		}
+
+		.navbar-button {
+			margin-right: 10px;
+		}
+
+		.navbar-button:last-child {
+			margin-right: 0;
 		}
 	}
 }

@@ -17,6 +17,7 @@ export interface CurrentlyPlaying {
 	track: Track;
 	progress: number;
 	duration: number;
+	is_playing: boolean;
 }
 
 export interface AccessToken {
@@ -71,12 +72,10 @@ export class Spotify {
 			return new SpotifyError("Error refreshing access token", response);
 		}
 	}
-
-	public async get_currently_playing(): Promise<
-		CurrentlyPlaying | SpotifyError
-	> {
+	
+	public async get_currently_playing(): Promise<CurrentlyPlaying | SpotifyError> {
 		const access_token = await this.refresh_access_token();
-
+		
 		if (access_token instanceof SpotifyError) {
 			return access_token;
 		}
@@ -101,14 +100,15 @@ export class Spotify {
 				},
 				progress: data.progress_ms,
 				duration: data.item.duration_ms,
+				is_playing: data.is_playing,
 			};
+		} else if (response.status == 204) {
+			return new SpotifyError("No song currently playing");
 		} else {
-			return new SpotifyError(
-				"Error getting currently playing",
-				response
-			);
+			return new SpotifyError("Error getting currently playing", response);
 		}
 	}
+	
 
 	public async get_recently_played(): Promise<Array<Track> | SpotifyError> {
 		const access_token = await this.refresh_access_token();
