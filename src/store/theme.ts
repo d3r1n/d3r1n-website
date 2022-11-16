@@ -6,7 +6,6 @@ export const useTheme = defineStore("theme", () => {
 
 	function toggle_theme() {
 		theme.value = !theme.value
-		console.log(theme.value)
 	}
 
 	return {

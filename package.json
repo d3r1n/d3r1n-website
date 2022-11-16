@@ -9,6 +9,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"buffer": "^6.0.3",
 		"pinia": "^2.0.23",
 		"progressbar.js": "^1.1.0",
 		"vue": "^3.2.37",

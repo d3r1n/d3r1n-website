@@ -4,13 +4,13 @@
 			<router-link :to="{name: 'home'}" class="navbar-button" v-html="smile">
 			</router-link>
 
-			<router-link :to="{name: 'music'}" class="navbar-button" v-html="music">
+			<router-link :to="{name: 'not-found'}" class="navbar-button" v-html="music">
 			</router-link>
 
-			<router-link :to="{name: 'projects'}" class="navbar-button" v-html="git_branch">
+			<router-link :to="{name: 'not-found'}" class="navbar-button" v-html="git_branch">
 			</router-link>
 
-			<router-link :to="{name: 'contact'}" class="navbar-button" v-html="at_sign">
+			<router-link :to="{name: 'not-found'}" class="navbar-button" v-html="at_sign">
 			</router-link>
 		</span>
 
@@ -105,9 +105,9 @@ const theme = useTheme();
 	}
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1000px) {
 	.navbar {
-		justify-content: space-around;
+		justify-content: space-evenly;
 
 		.navbar-button, .theme-button {
 			width: 60px;
@@ -117,6 +117,10 @@ const theme = useTheme();
 				width: 60%;
 				height: 60%;
 			}
+		}
+
+		.theme-button {
+			margin-left: 10px;
 		}
 
 		.navbar-button {

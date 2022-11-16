@@ -1,3 +1,6 @@
+// Import Buffer (browser version)
+import { Buffer } from 'buffer/';
+
 export class SpotifyError extends Error {
 	constructor(message: string, cause?: unknown) {
 		super(message);
@@ -54,9 +57,9 @@ export class Spotify {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",
-				Authorization: `Basic ${btoa(
+				Authorization: `Basic ${Buffer.from(
 					`${this.client_id}:${this.client_secret}`
-				)}`,
+				).toString("base64")}`,
 			},
 			body: `grant_type=refresh_token&refresh_token=${this.refresh_token}`,
 		});

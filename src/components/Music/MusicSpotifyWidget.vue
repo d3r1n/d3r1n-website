@@ -1,184 +1,232 @@
 <template>
-	<div class="spotify-widget" :class="{'light': theme.theme, 'dark': !theme.theme}" v-if="currently_playing != null">
-		<div class="track">
-			<img class="cover" :src="currently_playing.track.art_url" alt="Track/Album Cover" draggable="false">
+	<div class="spotify-widget-wrapper" v-if="cp != null">
+		<div class="spotify-widget" :class="{'light': theme.theme, 'dark': !theme.theme}">
+			<div class="track">
+				<img class="cover" :src="cp.track.art_url" alt="Track/Album Cover" draggable="false">
 
-			<div class="details">
-				<span class="title">
-					{{ currently_playing.track.song_name }}
-				</span>
+				<div class="details">
+					<span class="title">
+						{{ cp.track.song_name }}
+					</span>
 
-				<span class="artist">
-					{{ currently_playing.track.artist }}
-				</span>
+					<span class="artist">
+						{{ cp.track.artist }}
+					</span>
+				</div>
 			</div>
+
+			<span class="progress"></span>
 		</div>
-
-		<span class="progress"></span>
-
+	
 		<button class="widget-btn" @click="open_on_spotify">Play</button>
 	</div>
+
+	<div class="spotify-widget-wrapper spotify-widget-null" v-else />
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, Ref, onUpdated, watchEffect } from "vue";
+// Libraries
+import { ref, watch, onUpdated, onMounted } from "vue";
 import ProgressBar from 'progressbar.js';
 
+// Spotify Helper
 import { Spotify, SpotifyError, CurrentlyPlaying } from "@/lib/spotify-helper";
+// Stores
+import { useSpotify } from "@/store/spotify";
 import { useTheme } from "@/store/theme";
 
+// Setup Stoeres
 const theme = useTheme();
+const spotify = useSpotify();
 
-// Import env variables
-const _client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-const _client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
-const _refresh_token = import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN;
+// Setup Refs
+const cp = ref<CurrentlyPlaying | null>(null);
 
-const client = new Spotify(_client_id, _client_secret, _refresh_token);
-const currently_playing = ref<CurrentlyPlaying | null>(null);
-
-const duration = ref(0);
-const progress = ref(0);
-
-const trail_dark = "#61605f32"
-const trail_light = "#1d1c1a32"
-
-const progress_bar: Ref<any | null> = ref(null);
-const progress_bar_config = ref({
+const progress_bar = ref<any | null>(null);
+const progress_bar_config = {
 	strokeWidth: 2,
 	color: '#1DB954',
 	trailWidth: 2,
-	trailColor: "",
 	easing: 'linear',
 	duration: 1000,
-});
+};
 
+// Variables
+const trail_light = "#61605f46"
+const trail_dark = "#1d1c1a32"
+
+// Normalize a int range between 0 and 1
 function normalize (val: number, max: number, min: number): number { return (val - min) / (max - min); }
 
+// Open Track on Spotify
 function open_on_spotify(): void {
-	if (currently_playing.value != null) {
-		window.open(currently_playing.value.track.song_url, '_blank');
+	if (cp.value != null) {
+		window.open(cp.value.track.song_url, '_blank');
 	}
 }
 
-onMounted(async () => {
-	// Set an interval to update presence every 500ms
+// Import env variables for spotify
+const sp_client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+const sp_client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
+const sp_refresh_token = import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN;
+
+// Create a new spotify instance
+const client = new Spotify(sp_client_id, sp_client_secret, sp_refresh_token);
+
+// Updating the spotify store
+onMounted(() => {
 	setInterval(async () => {
 		// Get currently playing
-		const _currently_playing = await client.get_currently_playing();
+		const cp = await client.get_currently_playing();
 
 		// Check Error
-		if (_currently_playing instanceof SpotifyError) {
-			if (_currently_playing.message === "Error refreshing access token") {
+		if (cp instanceof SpotifyError) {
+			if (cp.message === "Error refreshing access token") {
 				// Refresh token
 				await client.refresh_access_token();
 			}
 			return;
 		}
 
-		// Check if track is playing
-		if (!_currently_playing.is_playing) {
-			currently_playing.value = null;
-			return;
-		}
-
-		// If track is changed, update current track
-		if (currently_playing.value?.track.song_name !== _currently_playing.track.song_name) {
-			currently_playing.value = _currently_playing;
-		}
-
-		// Update progress
-		// Convert duration and progress to seconds
-		duration.value = Math.floor(_currently_playing.duration / 1000);
-		progress.value = Math.floor(_currently_playing.progress / 1000);
+		// Update store
+		spotify.set_currently_playing(cp);
 	}, 1000);
+})
+
+// Watch for changes in the spotify store
+watch(spotify, (new_val) => {
+	// Check if the user is listening to music
+	if (new_val.currently_playing != null) {
+		// Check if the song is playing else set current playing to null
+		if (new_val.currently_playing.is_playing) {
+			// Update the current playing
+			cp.value = new_val.currently_playing;
+			// Shorten the song name if it is too long
+			if (cp.value.track.song_name.length > 20) {
+				let trimmed = cp.value.track.song_name.substring(0, 20)
+				// remove the last space if there is one
+				if (trimmed[trimmed.length - 1] === " ") {
+					trimmed = trimmed.substring(0, trimmed.length - 1);
+				}
+				// add ... to the end
+				cp.value.track.song_name = trimmed + "..."
+			}
+		}
+		else {
+			// Set to null
+			cp.value = null;
+		}
+	}
 });
 
+// Watch for theme changes
+watch(theme, (new_val) => {
+	document.documentElement.style.setProperty('--spotify-trail-color', new_val.theme ? trail_dark : trail_light);
+}, { immediate: true });
+
 onUpdated(() => {
-	if (currently_playing.value == null) {
-		progress_bar.value?.destroy();
-		progress_bar.value = null;
-		return;
+	// Update the progress bar
+	if (cp.value != null) {
+		// Check if the progress bar is null
+		if (progress_bar.value == null) {
+			// Create a new progress bar
+			progress_bar.value = new ProgressBar.Line('.progress', progress_bar_config);
+		}
+
+		// Update the progress bar
+		progress_bar.value.animate(normalize(cp.value.progress, cp.value.duration, 0));
 	}
 	else {
-		if (progress_bar.value == null) {
-			progress_bar.value = new ProgressBar.Line('.progress', progress_bar_config.value);
+		// Destroy the progress bar and set it to null
+		if (progress_bar.value != null) {
+			progress_bar.value.destroy();
+			progress_bar.value = null;
 		}
 	}
 })
-
-// Update progress bar
-watch([duration, progress], ([duration, progress]) => {
-	if (progress_bar.value != null) {
-		(progress_bar.value as any).animate(normalize(progress, duration, 0));
-	}
-});
-
-// Update bar color
-watchEffect(() => {
-	if (progress_bar.value != null) {
-		progress_bar_config.value.trailColor = theme.theme ? trail_light : trail_dark;
-		progress_bar.value.destroy();
-		progress_bar.value = new ProgressBar.Line('.progress', progress_bar_config.value);
-		progress_bar.value.set(normalize(progress.value, duration.value, 0));
-	}
-});
 </script>
 
 <style lang="scss">	
 @import '@/styles/variables.scss';
 
-.spotify-widget {
+.spotify-widget-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
-	max-width: 30%;
-	height: min-content;
-	padding: 15px;
-	border-radius: 15px;
-
-	.track {
+	.spotify-widget {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-
-		.cover {
-			width: 40%;
-			border-radius: 15px;	
-		}
-
-		.details {
-			display: flex;
-			flex-direction: column;
-			margin-left: 15px;
-
-			width: 60%;
-
-			.title {
-				font-size: 1.5em;
-				font-weight: 600;
-			}
-
-			.artist {
-				font-size: 1em;
-				font-weight: 400;
-			}
-		}
-	}
-
-	.progress {
+		box-sizing: border-box;
+	
 		width: 100%;
+		height: 100%;
 
-		svg {
-			width: 100%;
-			margin-top: 10px;
-			border-radius: 2em;
+		padding: 15px;
+		border-radius: 15px;
 
-			path {
-				stroke-linecap: round;
+		.spotify-widget-null {
+			padding: 0;
+		}
+	
+		.track {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+	
+			.cover {
+				width: 40%;
+				border-radius: 15px;	
 			}
+	
+			.details {
+				display: flex;
+				flex-direction: column;
+				margin-left: 15px;
+	
+				width: 60%;
+	
+				.title {
+					font-size: 1.5em;
+					font-weight: 600;
+				}
+	
+				.artist {
+					font-size: 1em;
+					font-weight: 400;
+				}
+			}
+		}
+	
+		.progress {
+			width: 100%;
+	
+			svg {
+				width: 100%;
+				margin-top: 10px;
+				border-radius: 2em;
+	
+				path {
+					stroke-linecap: round;
+				}
+
+				path:first-child {
+					stroke: var(--spotify-trail-color);
+				}
+			}
+		}
+	
+		&.light {
+			color: $light-foreground;
+			background: $light-secondary;
+		}
+	
+		&.dark {
+			color: $dark-foreground;
+			background: $dark-secondary;
 		}
 	}
 
@@ -204,17 +252,7 @@ watchEffect(() => {
 			transform: scale(1.05);
 		}
 	}
-
-	&.light {
-		color: $light-foreground;
-		background: $light-secondary;
-	}
-
-	&.dark {
-		color: $dark-foreground;
-		background: $dark-secondary;
-	}
 }
 
-
+// TODO: Do responsive separately in views
 </style>

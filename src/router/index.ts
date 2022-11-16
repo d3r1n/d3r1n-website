@@ -1,15 +1,11 @@
 import { createRouter, Router, createWebHistory } from "vue-router";
 // Import Components
 import Home from "../views/Home.vue";
-import Music from "../views/Music.vue";
-import Projects from "../views/Projects.vue";
-import Contact from "../views/Contact.vue";
+import NotFound from "../views/NotFound.vue";
 
-const routes: Array<{ name: string, path: string; component: Object }> = [
+const routes: Array<{ name?: string, path: string; component: Object }> = [
 	{ name: "home", path: "/", component: Home },
-	{ name: "music", path: "/music", component: Music },
-	{ name: "projects", path: "/projects", component: Projects },
-	{ name: "contact", path: "/contact", component: Contact },
+	{ name: "not-found", path: "/:pathMatch(.*)*", component: NotFound}
 ];
 
 const router: Router = createRouter({

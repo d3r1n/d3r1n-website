@@ -1,5 +1,5 @@
 <template>
-	<div class="profile">
+	<div class="home-profile">
 		<div class="avatar" v-if="presence.image_url">
 			<div id="avatar-frame">
 				<svg width="0" height="0">
@@ -22,7 +22,7 @@
 				<p>I'm <b>Derin Önder Eren</b> a.k.a "<b>d3r1n</b>"</p>
 			</span>
 
-			<span class="presence" v-if="presence.presence_text">{{ presence_text }}</span>
+			<span class="presence">{{ presence_text }}</span>
 		</div>
 	</div>
 </template>
@@ -31,16 +31,20 @@
 import { useDiscordPresence } from "@/store/discord"
 import { Discord, DiscordError } from "@/lib/discord-helper"
 import { onMounted, ref, watch } from "vue";
+import { useSpotify } from "@/store/spotify";
 
 const presence = useDiscordPresence()
+const spotify = useSpotify();
+
 const presence_text = ref("")
 const status_color = ref("")
 
 const helper = new Discord(import.meta.env.VITE_DISCORD_ID)
 
+
 onMounted(async () => {
 	// Set an interval to update presence every 500ms
-	setInterval(() => {
+	const interval_function = () => {
 		helper.get_presence().then((_presence) => {
 			// Check Error
 			if (_presence instanceof DiscordError) {
@@ -51,11 +55,13 @@ onMounted(async () => {
 			// Update Presence
 			presence.presence = _presence;
 		});
-	}, 500);
+	}
+	interval_function();
+	setInterval(interval_function, 5000);
 });
 
 // Watch for presence changes
-watch(presence, (new_presence) => {
+watch([presence, spotify], ([new_presence, new_spotify]) => {
 	// Set status text
 	if (new_presence.status === "online") {
 		presence_text.value = "Online"
@@ -70,10 +76,18 @@ watch(presence, (new_presence) => {
 		presence_text.value = "Offline"
 		status_color.value = "#99aab5"
 	}
-	if (presence.presence_text)
-		if (presence.presence_text.length > 0) {
+
+	if (new_presence.presence_text != null) {
+		if (new_presence.presence_text.length > 0) {
 			presence_text.value += ` | ${presence.presence_text}`
 		}
+	}
+
+	if (new_presence.presence_text == null) {
+		if (new_spotify.currently_playing != null && new_spotify.currently_playing.is_playing) {
+			presence_text.value += " | Listening to Spotify"
+		}
+	}
 })
 
 </script>
@@ -81,14 +95,12 @@ watch(presence, (new_presence) => {
 <style lang="scss">
 @import "@/styles/variables.scss";
 
-.profile {
+.home-profile {
 	user-select: none;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: 2rem;
-	margin-left: 2em;
 	width: fit-content;
 	height: fit-content;
 
@@ -165,7 +177,6 @@ watch(presence, (new_presence) => {
 
 	@media screen and (max-width: 1000px) {
 		flex-direction: column;
-		align-self: inherit;
 		margin-left: 0;
 
 		.avatar {
