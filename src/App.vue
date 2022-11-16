@@ -13,5 +13,11 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'JetBrains Mono', monospace;
+	scrollbar-width:none;
+  	-ms-overflow-style:none;
+}
+
+body::-webkit-scrollbar {
+  display:none;
 }
 </style>
