@@ -42,10 +42,7 @@ const theme = useTheme();
 		justify-self: center;
 		display: grid;
 		width: 90%;
-		
 		grid-template-columns: 6fr 3fr;
-		grid-template-rows: 45% 55%;
-
 		align-items: center;
 		justify-items: center;
 
