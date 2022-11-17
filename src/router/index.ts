@@ -3,9 +3,9 @@ import { createRouter, Router, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import NotFound from "../views/NotFound.vue";
 
-const routes: Array<{ name?: string, path: string; component: Object }> = [
+const routes: Array<{ name?: string, path: string; alias?: string[]; component: Object }> = [
 	{ name: "home", path: "/", component: Home },
-	{ name: "not-found", path: "/:pathMatch(.*)*", component: NotFound}
+	{ name: "not-found", path: "/404", alias:[ "/:pathMatch(.*)*" ], component: NotFound }
 ];
 
 const router: Router = createRouter({
