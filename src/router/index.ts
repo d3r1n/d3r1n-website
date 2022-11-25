@@ -5,6 +5,7 @@ import NotFound from "../views/NotFound.vue";
 
 const routes: Array<{ name?: string, path: string; alias?: string[]; component: Object }> = [
 	{ name: "home", path: "/", component: Home },
+	{ path: "/home", component: Home },
 	{ name: "not-found", path: "/404", alias:[ "/:pathMatch(.*)*" ], component: NotFound }
 ];
 

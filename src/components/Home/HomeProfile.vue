@@ -10,7 +10,7 @@
 					</clipPath>
 				</svg>
 
-				<img :src="presence.image_url" draggable="false"/>
+				<img :src="presence.image_url" draggable="false" alt="Discord Profile Image"/>
 			</div>
 			<span id="status_circle" :style="{ 'backgroundColor': status_color }"></span>
 		</div>
