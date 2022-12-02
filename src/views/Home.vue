@@ -2,11 +2,13 @@
 	<div class="home-page" :class="{'light': theme.theme, 'dark': !theme.theme}">
 		<Navbar />
 		
-		<div class="home-page-content">
-			<HomeProfile />
-			<MusicSpotifyWidget />
-			<HomeAbout />
-			<HomeTopRepo />	
+		<div class="content">
+			<div class="grid">
+				<HomeProfile />
+				<MusicSpotifyWidget />
+				<HomeAbout />
+				<HomeTopRepo />	
+			</div>
 		</div>
 	</div>
 </template>
@@ -30,57 +32,64 @@ const theme = useTheme();
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 	min-height: 100%;
 
 	.navbar {
 		justify-self: flex-start;
-		margin-bottom: 30px;
 	}
 
-	.home-page-content {
-		justify-self: center;
-		display: grid;
-		width: 90%;
-		grid-template-columns: 6fr 3fr;
+	.content {
+		display: flex;
+		flex-direction: column;
 		align-items: center;
-		justify-items: center;
+		justify-content: center;
+		flex: 1;
 
-		gap: 30px;
+		.grid {
+			justify-self: center;
+			display: grid;
+			width: 90%;
+			height: max-content;
+			grid-template-columns: 6fr 3fr;
+			align-items: center;
+			justify-items: center;
 
-		.home-profile {
-			justify-self: stretch;
-		}
-
-		.home-about {
-			width: 80%;
-			height: 90%;
-		}
-
-		@media (max-width: 1000px) {
-			grid-template-columns: 1fr;
-			grid-template-rows: auto auto auto auto;
+			gap: 30px;
 
 			.home-profile {
-				justify-self: center;
+				justify-self: stretch;
 			}
 
 			.home-about {
-				width: 90%;
-				height: auto;
-
-				font-size: 16px;
+				width: 80%;
+				height: 90%;
 			}
 
-			.home-top-repo {
-				margin-bottom: 30px;
+			@media (max-width: 1000px) {
+				grid-template-columns: 1fr;
+				grid-template-rows: auto auto auto auto;
 
-				.repo-name {
-					font-size: 20px;
+				.home-profile {
+					justify-self: center;
 				}
 
-				.repo-desc, .repo-info span {
-					font-size: 18px;
+				.home-about {
+					width: 90%;
+					height: auto;
+
+					font-size: 16px;
+				}
+
+				.home-top-repo {
+					margin-bottom: 30px;
+
+					.repo-name {
+						font-size: 20px;
+					}
+
+					.repo-desc, .repo-info span {
+						font-size: 18px;
+					}
 				}
 			}
 		}
@@ -94,6 +103,12 @@ const theme = useTheme();
 	&.dark {
 		background-color: $dark-background;
 		color: $dark-foreground;
+	}
+
+	@media screen and (max-width: 1000px) {
+		.navbar {
+			margin-bottom: 30px
+		}
 	}
 }
 </style>
