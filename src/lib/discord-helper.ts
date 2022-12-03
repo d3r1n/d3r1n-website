@@ -29,16 +29,16 @@ export class Discord {
 		this.user_id = user_id;
 	}
 
-	public async get_presence(): Promise<DiscordPresence | DiscordError> {
+	public async get_presence(): Promise<DiscordPresence> {
 		const lanyard_url = `https://api.lanyard.rest/v1/users/${this.user_id}`;
 		let response = await fetch(lanyard_url);
 		if (!response.ok) {
-			return new DiscordError("Failed to fetch discord presence");
+			throw new DiscordError("Failed to fetch discord presence");
 		}
 
 		let data = await response.json();
 		if (data.success === false) {
-			return new DiscordError("Failed to fetch discord presence");
+			throw new DiscordError("Failed to fetch discord presence");
 		}
 		data = data.data;
 		let avatar_url = `https://cdn.discordapp.com/avatars/${this.user_id}/${data.discord_user.avatar}.png?size=512`;

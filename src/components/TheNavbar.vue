@@ -4,7 +4,7 @@
 			<router-link :to="{name: 'home'}" class="navbar-button" v-html="smile">
 			</router-link>
 
-			<router-link :to="{name: 'not-found'}" class="navbar-button" v-html="music">
+			<router-link :to="{name: 'music'}" class="navbar-button" v-html="music">
 			</router-link>
 
 			<router-link :to="{name: 'not-found'}" class="navbar-button" v-html="git_branch">

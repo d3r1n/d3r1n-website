@@ -16,6 +16,12 @@ export interface Track {
 	artist: string;
 }
 
+export interface Artist {
+	art_url: string;
+	artist_url: string;
+	artist_name: string;
+}
+
 export interface CurrentlyPlaying {
 	track: Track;
 	progress: number;
@@ -45,7 +51,7 @@ export class Spotify {
 		this.access_token = null;
 	}
 
-	public async refresh_access_token(): Promise<string | SpotifyError> {
+	public async refresh_access_token(): Promise<string> {
 		if (
 			this.access_token != null &&
 			this.access_token.expires_in > Date.now()
@@ -72,16 +78,12 @@ export class Spotify {
 			};
 			return this.access_token.access_token;
 		} else {
-			return new SpotifyError("Error refreshing access token", response);
+			throw new SpotifyError("Error refreshing access token", response);
 		}
 	}
 	
-	public async get_currently_playing(): Promise<CurrentlyPlaying | SpotifyError> {
+	public async get_currently_playing(): Promise<CurrentlyPlaying> {
 		const access_token = await this.refresh_access_token();
-		
-		if (access_token instanceof SpotifyError) {
-			return access_token;
-		}
 
 		const response = await fetch(
 			"https://api.spotify.com/v1/me/player/currently-playing",
@@ -106,22 +108,18 @@ export class Spotify {
 				is_playing: data.is_playing,
 			};
 		} else if (response.status == 204) {
-			return new SpotifyError("No song currently playing");
+			throw new SpotifyError("No song currently playing");
 		} else {
-			return new SpotifyError("Error getting currently playing", response);
+			throw new SpotifyError("Error getting currently playing", response);
 		}
 	}
 	
 
-	public async get_recently_played(): Promise<Array<Track> | SpotifyError> {
+	public async get_recently_played(limit: number): Promise<Array<Track>> {
 		const access_token = await this.refresh_access_token();
 
-		if (access_token instanceof SpotifyError) {
-			return access_token;
-		}
-
 		const response = await fetch(
-			"https://api.spotify.com/v1/me/player/recently-played",
+			`https://api.spotify.com/v1/me/player/recently-played?limit=${limit}`,
 			{
 				headers: {
 					Authorization: `Bearer ${access_token}`,
@@ -140,19 +138,15 @@ export class Spotify {
 				};
 			});
 		} else {
-			return new SpotifyError("Error getting recently played", response);
+			throw new SpotifyError("Error getting recently played", response);
 		}
 	}
 
-	public async get_top_tracks(): Promise<Array<Track> | SpotifyError> {
+	public async get_top_tracks(limit: number): Promise<Array<Track>> {
 		const access_token = await this.refresh_access_token();
 
-		if (access_token instanceof SpotifyError) {
-			return access_token;
-		}
-
 		const response = await fetch(
-			"https://api.spotify.com/v1/me/top/tracks",
+			`https://api.spotify.com/v1/me/top/tracks?limit=${limit}&time_range=medium_term`,
 			{
 				headers: {
 					Authorization: `Bearer ${access_token}`,
@@ -171,7 +165,33 @@ export class Spotify {
 				};
 			});
 		} else {
-			return new SpotifyError("Error getting top tracks", response);
+			throw new SpotifyError("Error getting top tracks", response);
+		}
+	}
+
+	public async get_top_artists(limit: number): Promise<Array<Artist>> {
+		const access_token = await this.refresh_access_token();
+
+		const response = await fetch(
+			`https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=medium_term`,
+			{
+				headers: {
+					Authorization: `Bearer ${access_token}`,
+				},
+			}
+		);
+
+		if (response.status == 200) {
+			const data = await response.json();
+			return data.items.map((item: any) => {
+				return {
+					art_url: item.images[0].url,
+					artist_url: item.external_urls.spotify,
+					artist_name: item.name,
+				};
+			});
+		} else {
+			throw new SpotifyError("Error getting top artists", response);
 		}
 	}
 }

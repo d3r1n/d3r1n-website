@@ -26,16 +26,20 @@
 
 <script setup lang="ts">
 // Libraries
-import { ref, watch, onUpdated, onMounted } from "vue";
+import { ref, watch, onUpdated, onMounted, onBeforeUnmount } from "vue";
+import { useRoute } from "vue-router";
 import ProgressBar from 'progressbar.js';
 
 // Spotify Helper
-import { Spotify, SpotifyError, CurrentlyPlaying } from "@/lib/spotify-helper";
+import { Spotify, SpotifyError, CurrentlyPlaying, Track } from "@/lib/spotify-helper";
 // Stores
 import { useSpotify } from "@/store/spotify";
 import { useTheme } from "@/store/theme";
 
-// Setup Stoeres
+// Setup Route
+const route = useRoute();
+
+// Setup Stores
 const theme = useTheme();
 const spotify = useSpotify();
 
@@ -73,23 +77,44 @@ const sp_refresh_token = import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN;
 // Create a new spotify instance
 const client = new Spotify(sp_client_id, sp_client_secret, sp_refresh_token);
 
+let interval: any;
+
 // Updating the spotify store
-onMounted(() => {
-	setInterval(async () => {
-		// Get currently playing
-		const cp = await client.get_currently_playing();
+onMounted(async () => {
 
-		// Check Error
-		if (cp instanceof SpotifyError) {
-			if (cp.message === "Error refreshing access token") {
-				// Refresh token
-				await client.refresh_access_token();
+	// Combine recenlty played tracks, top tracks and top artists into one Promise
+	try {
+		const [recent_tracks, top_tracks, top_artists] = await Promise.all([
+			client.get_recently_played(5),
+			client.get_top_tracks(5),
+			client.get_top_artists(5)
+		]);
+
+		// Update the spotify store
+		spotify.set_recent_tracks(recent_tracks);
+		spotify.set_top_tracks(top_tracks);
+		spotify.set_top_artists(top_artists);
+	} catch (err) {
+		console.error(err);
+	}
+
+	interval = setInterval(async () => {
+
+		// Get the currently playing track
+		try {
+			let res = await client.get_currently_playing();
+			// Update store
+			spotify.set_currently_playing(res);
+		} catch (err) {
+			console.error(err);
+			if (err instanceof SpotifyError) {
+				if (err.message === "Error refreshing access token") {
+					// Refresh token
+					await client.refresh_access_token();
+				}
+				return;
 			}
-			return;
 		}
-
-		// Update store
-		spotify.set_currently_playing(cp);
 	}, 1000);
 })
 
@@ -118,6 +143,10 @@ watch(spotify, (new_val) => {
 		}
 	}
 });
+
+onBeforeUnmount(() => {
+	clearInterval(interval);
+})
 
 // Watch for theme changes
 watch(theme, (new_val) => {

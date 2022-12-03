@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { useDiscordPresence } from "@/store/discord"
 import { Discord, DiscordError } from "@/lib/discord-helper"
-import { onMounted, ref, watch } from "vue";
+import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useSpotify } from "@/store/spotify";
 
 const presence = useDiscordPresence()
@@ -41,23 +41,20 @@ const status_color = ref("")
 
 const helper = new Discord(import.meta.env.VITE_DISCORD_ID)
 
+let interval: any;
 
 onMounted(async () => {
 	// Set an interval to update presence every 500ms
 	const interval_function = () => {
 		helper.get_presence().then((_presence) => {
-			// Check Error
-			if (_presence instanceof DiscordError) {
-				console.error(_presence);
-				return;
-			}
-				
 			// Update Presence
 			presence.presence = _presence;
+		}).catch((err: DiscordError) => {
+			console.error(err);
 		});
 	}
 	interval_function();
-	setInterval(interval_function, 5000);
+	interval = setInterval(interval_function, 5000);
 });
 
 // Watch for presence changes
@@ -88,6 +85,10 @@ watch([presence, spotify], ([new_presence, new_spotify]) => {
 			presence_text.value += " | Listening to Spotify"
 		}
 	}
+})
+
+onBeforeUnmount(() => {
+	clearInterval(interval);
 })
 
 </script>
