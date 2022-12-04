@@ -63,13 +63,14 @@ onMounted(() => {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		width: 100%;
 		flex: 1;
 
 		.grid {
 			justify-self: center;
 			display: grid;
 			width: 90%;
-			grid-template-columns: 2fr 1fr 2fr;
+			grid-template-columns: 1fr 1fr 1fr;
 			grid-template-rows: 1fr 2fr;
 			align-items: center;
 			justify-items: center;
