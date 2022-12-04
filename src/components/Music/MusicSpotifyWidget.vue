@@ -86,8 +86,8 @@ onMounted(async () => {
 	try {
 		const [recent_tracks, top_tracks, top_artists] = await Promise.all([
 			client.get_recently_played(5),
-			client.get_top_tracks(5),
-			client.get_top_artists(5)
+			client.get_top_tracks(8),
+			client.get_top_artists(8)
 		]);
 
 		// Update the spotify store

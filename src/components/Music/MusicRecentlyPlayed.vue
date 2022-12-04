@@ -73,6 +73,8 @@ watch(tracks, (new_tracks) => {
 	display: flex;
 	font-size: 12px;
 
+	width: 90%;
+
 	flex-direction: column;
 
 	.header {
@@ -86,8 +88,8 @@ watch(tracks, (new_tracks) => {
 	.tracks {
 		display: flex;
 		flex-direction: column;
-		width: max-content;
-		height: min-content;
+		width: 100%;
+		height: max-content;
 
 		gap: 15px;
 
@@ -100,7 +102,8 @@ watch(tracks, (new_tracks) => {
 			width: 100%;
 
 			border-radius: 15px;
-				
+			overflow: hidden;
+			
 			img {
 				width: 100px;
 				border-radius: 15px 0 0 15px;
