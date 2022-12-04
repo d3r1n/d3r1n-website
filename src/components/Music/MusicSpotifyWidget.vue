@@ -106,7 +106,6 @@ onMounted(async () => {
 			// Update store
 			spotify.set_currently_playing(res);
 		} catch (err) {
-			console.error(err);
 			if (err instanceof SpotifyError) {
 				if (err.message === "Error refreshing access token") {
 					// Refresh token
@@ -184,6 +183,10 @@ onUpdated(() => {
 	align-items: center;
 	justify-content: center;
 
+	.spotify-widget-null {
+		display: none;
+	}
+
 	.spotify-widget {
 		display: flex;
 		flex-direction: column;
@@ -196,10 +199,6 @@ onUpdated(() => {
 
 		padding: 15px;
 		border-radius: 15px;
-
-		.spotify-widget-null {
-			padding: 0;
-		}
 	
 		.track {
 			display: flex;

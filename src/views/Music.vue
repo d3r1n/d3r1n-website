@@ -18,8 +18,29 @@ import MusicSpotifyWidget from "@/components/Music/MusicSpotifyWidget.vue";
 import MusicRecentlyPlayed from "@/components/Music/MusicRecentlyPlayed.vue";
 import MusicTopItems from "@/components/Music/MusicTopItems.vue";
 import { useTheme } from "@/store/theme";
+import { useSpotify } from "@/store/spotify";
+import { onMounted, watch } from "vue";
 
 const theme = useTheme();
+const spotify = useSpotify();
+
+onMounted(() => {
+	watch(spotify, (val) => {
+		let spotify_elm = document.querySelector(".spotify-widget-wrapper") as HTMLElement;
+		let recenlty_played = document.querySelector(".recently-played") as HTMLElement;
+
+		if (spotify_elm && recenlty_played) {
+			if (val.currently_playing == null || val.currently_playing.is_playing == false) {
+				recenlty_played.style.gridRow = "1/3";
+				recenlty_played.style.alignSelf = "flex-start";
+			}
+			else {
+				recenlty_played.style.gridRow = "2/3";
+				recenlty_played.style.alignSelf = "center";
+			}
+		}
+	});
+});
 
 </script>
 
