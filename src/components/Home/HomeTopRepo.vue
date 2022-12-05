@@ -5,7 +5,7 @@
 		</span>
 
 		<div class="top-repo-wrapper" :class="{'light': theme.theme, 'dark': !theme.theme}">
-			<div class="repo-title">
+			<div class="repo-title" @click="openGithub">
 				{{ topRepo.name }}
 			</div>
 
@@ -106,6 +106,10 @@ onMounted(() => {
 			font-size: 2em;
 			font-weight: 400;
 			margin-bottom: 15px;
+
+			&:hover {
+				cursor: pointer;
+			}
 		}
 
 		.repo-desc {
