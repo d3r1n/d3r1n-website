@@ -50,8 +50,9 @@ const theme = useTheme();
 			justify-self: center;
 			display: grid;
 			width: 90%;
-			height: max-content;
-			grid-template-columns: 6fr 3fr;
+			height: min-content;
+			grid-template-columns: 7fr 3fr;
+			grid-template-rows: 1fr 1fr;
 			align-items: center;
 			justify-items: center;
 
@@ -62,8 +63,10 @@ const theme = useTheme();
 			}
 
 			.home-about {
+				justify-self: stretch;
 				width: 80%;
-				height: 90%;
+				height: max-content;
+				max-width: 800px;
 			}
 
 			@media (max-width: 1000px) {

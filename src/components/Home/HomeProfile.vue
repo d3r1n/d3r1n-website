@@ -19,7 +19,7 @@
 			<span class="greeting">Merhaba!</span>
 
 			<span class="name">
-				<p>I'm <b>Derin Önder Eren</b> a.k.a "<b>d3r1n</b>"</p>
+				<p>I'm Derin Önder <span>"d3r1n"</span> Eren</p>
 			</span>
 
 			<span class="presence">{{ presence_text }}</span>
@@ -112,7 +112,7 @@ onBeforeUnmount(() => {
 		position: relative;
 
 		width: 250px;
-		height: 250px;
+		height: 100%;
 
 		#avatar-frame {
 			width: 100%;
@@ -165,6 +165,11 @@ onBeforeUnmount(() => {
 
 			p {
 				margin: 0;
+
+				span {
+					font-weight: 600;
+					color: $accent-pink;
+				}
 			}
 		}
 

@@ -113,6 +113,8 @@ onMounted(() => {
 					grid-column: 1 / 2;
 
 					width: 90%;
+
+					margin-bottom: 30px;
 				}
 
 				.recently-played {

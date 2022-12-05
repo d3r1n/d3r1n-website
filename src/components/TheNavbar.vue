@@ -43,8 +43,8 @@ const theme = useTheme();
 
 	width: 90%;
 	height: 100%;
-	max-width: 1440px;
 	margin-top: 15px;
+	overflow: visible;
 
 	.left-side-buttons {
 		display: flex;
@@ -65,6 +65,7 @@ const theme = useTheme();
 		height: 75px;
 
 		border-radius: 10px;
+		transition: all 0.2s ease-in-out;
 
 		svg {
 			width: 50px;
@@ -73,15 +74,22 @@ const theme = useTheme();
 
 		&:hover {
 			cursor: pointer;
+			transform: scale(1.05);
 		}
 	}
 
 	.navbar-button {
 		margin-right:15px;
+
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 
-	.navbar-button:last-child {
-		margin-right: 0;
+	&.light, &.dark {
+		.navbar-button:hover {
+			background: rgba(120, 104, 230, 0.5);
+		}
 	}
 
 	&.light {

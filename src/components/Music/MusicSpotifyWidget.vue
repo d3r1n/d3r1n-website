@@ -183,6 +183,9 @@ onUpdated(() => {
 	align-items: center;
 	justify-content: center;
 
+	width: 100%;
+	height: 100%;
+
 	.spotify-widget-null {
 		display: none;
 	}
@@ -194,8 +197,7 @@ onUpdated(() => {
 		justify-content: center;
 		box-sizing: border-box;
 	
-		width: 100%;
-		height: 100%;
+		
 
 		padding: 15px;
 		border-radius: 15px;
