@@ -65,7 +65,7 @@ const theme = useTheme();
 		height: 75px;
 
 		border-radius: 10px;
-		transition: transition 0.2s ease-in-out, background-color 0.2s ease-in-out;
+		transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
 		svg {
 			width: 50px;
