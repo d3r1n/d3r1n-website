@@ -78,6 +78,8 @@ onMounted(() => {
 			row-gap: 15px;
 			column-gap: 30px;
 
+			margin-bottom: 30px;
+
 
 			.spotify-widget-wrapper {
 				justify-self: stretch;
