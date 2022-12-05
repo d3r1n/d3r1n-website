@@ -65,7 +65,7 @@ const theme = useTheme();
 		height: 75px;
 
 		border-radius: 10px;
-		transition: all 0.2s ease-in-out;
+		transition: transition 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
 		svg {
 			width: 50px;
@@ -88,7 +88,7 @@ const theme = useTheme();
 
 	&.light, &.dark {
 		.navbar-button:hover {
-			background: rgba(120, 104, 230, 0.5);
+			background-color: rgba(120, 104, 230, 0.5);
 		}
 	}
 
