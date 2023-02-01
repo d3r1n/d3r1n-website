@@ -1,8 +1,16 @@
 # My Protfolio
+
 This is my protfolio website's last version. Made with Vue.js, TypeScript and SCSS.
 
 ## Environment Variables
+
 You have to set the following environment variables in a `.env` file in the root of the project.
+
+> for getting your Spotify refresh token, follow this guide:
+> https://benwiz.com/blog/create-spotify-refresh-token/
+
+> You can find an example .env file named `.env.example` in the root of the project.
+> You can rename it to `.env` and fill it with your data.
 
 | Variable | Description |
 | --- | --- |
@@ -13,8 +21,14 @@ You have to set the following environment variables in a `.env` file in the root
 | VITE_SPOTIFY_REFRESH_TOKEN | Your Spotify app's refresh token |
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
 
+---
+
 ## Todo
-- [ ] Add remaining pages
-- [ ] Add a footer with latest commit's link
+
+- [ ] Add the Projects page
+- [ ] Add the Contact page
+- [ ] Blog? (maybe)
+- [X] Add a widget with latest commit's link
