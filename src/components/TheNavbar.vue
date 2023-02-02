@@ -7,7 +7,7 @@
 			<router-link :to="{name: 'music'}" class="navbar-button" v-html="music">
 			</router-link>
 
-			<router-link :to="{name: 'not-found'}" class="navbar-button" v-html="git_branch">
+			<router-link :to="{name: 'projects'}" class="navbar-button" v-html="git_branch">
 			</router-link>
 
 			<router-link :to="{name: 'not-found'}" class="navbar-button" v-html="at_sign">
@@ -33,8 +33,6 @@ const theme = useTheme();
 </script>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .navbar {
 	overflow: hidden;
 	display: flex;

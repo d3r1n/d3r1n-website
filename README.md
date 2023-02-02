@@ -28,7 +28,8 @@ You have to set the following environment variables in a `.env` file in the root
 
 ## Todo
 
-- [ ] Add the Projects page
+- [X] Add the Projects page
+- [X] Add a widget with latest commit's link
+- [ ] Optimize and refactor the css
 - [ ] Add the Contact page
 - [ ] Blog? (maybe)
-- [X] Add a widget with latest commit's link

@@ -20,8 +20,6 @@ const theme = useTheme();
 </script>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .not-found-page {
 	display: flex;
 	flex-direction: column;

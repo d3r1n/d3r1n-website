@@ -107,8 +107,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .top-items {
 	display: flex;
 	font-size: 12px;

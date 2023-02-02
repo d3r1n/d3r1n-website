@@ -28,7 +28,7 @@
 			</div>
 		</div>
 
-		<button class="top-repo-btn" @click="openGithub">Github</button>
+		<button class="btn-widget" @click="openGithub">Github</button>
 	</div>
 </template>
 
@@ -66,8 +66,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import '@/styles/variables.scss';
-
 .home-top-repo {
 	display: flex;
 	flex-direction: column;
@@ -144,29 +142,6 @@ onMounted(() => {
 		&.dark {
 			background-color: $dark-secondary;
 			color: $dark-foreground;
-		}
-	}
-
-	.top-repo-btn {
-		font-family: inherit;
-		font-size: 18px;
-		font-weight: 400;
-
-		width: 30%;
-		height: 3em;
-		margin-top: 10px;
-
-		border: none;
-		border-radius: 4em;
-
-		color: $light-background;
-		background-color: $accent-purple;
-
-		transition: transform 0.2s ease-in-out;
-
-		&:hover {
-			cursor: pointer;
-			transform: scale(1.05);
 		}
 	}
 }

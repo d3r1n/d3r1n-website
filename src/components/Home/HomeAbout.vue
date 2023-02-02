@@ -17,8 +17,6 @@ const theme = useTheme();
 </script>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .home-about {
 	display: flex;
 	align-items: center;

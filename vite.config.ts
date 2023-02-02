@@ -6,10 +6,17 @@ import path from "path";
 export default defineConfig({
 	resolve: {
 		alias: {
-			"@": path.resolve(__dirname, "/src"),
+			"@": path.resolve(__dirname, "src"),
 		},
 	},
 	plugins: [
 		vue(),
 	],
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `@import "@/styles/global.scss";`,
+			},
+		},
+	},
 });

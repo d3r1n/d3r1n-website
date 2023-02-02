@@ -26,8 +26,6 @@ const theme = useTheme();
 </script>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .home-page {
 	display: flex;
 	flex-direction: column;
@@ -60,6 +58,10 @@ const theme = useTheme();
 
 			.home-profile {
 				justify-self: stretch;
+			}
+
+			.spotify-widget-wrapper {
+				max-width: 550px;
 			}
 
 			.home-about {

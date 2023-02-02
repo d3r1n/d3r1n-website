@@ -94,8 +94,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .home-profile {
 	user-select: none;
 

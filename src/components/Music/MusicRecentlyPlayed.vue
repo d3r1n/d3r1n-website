@@ -67,8 +67,6 @@ watch(tracks, (new_tracks) => {
 </script>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .recently-played {
 	display: flex;
 	font-size: 12px;

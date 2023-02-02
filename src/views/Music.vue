@@ -45,8 +45,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import "@/styles/variables.scss";
-
 .music-page {
 	display: flex;
 	flex-direction: column;
@@ -82,8 +80,8 @@ onMounted(() => {
 
 
 			.spotify-widget-wrapper {
-				justify-self: stretch;
-
+				justify-self: center;
+				
 				height: max-content;
 			}
 

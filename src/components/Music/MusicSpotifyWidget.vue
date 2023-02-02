@@ -18,7 +18,7 @@
 			<span class="progress"></span>
 		</div>
 	
-		<button class="widget-btn" @click="open_on_spotify">Play</button>
+		<button class="btn-widget" @click="open_on_spotify">Play</button>
 	</div>
 
 	<div class="spotify-widget-wrapper spotify-widget-null" v-else />
@@ -175,8 +175,6 @@ onUpdated(() => {
 </script>
 
 <style lang="scss">	
-@import '@/styles/variables.scss';
-
 .spotify-widget-wrapper {
 	display: flex;
 	flex-direction: column;
@@ -257,29 +255,6 @@ onUpdated(() => {
 		&.dark {
 			color: $dark-foreground;
 			background: $dark-secondary;
-		}
-	}
-
-	.widget-btn {
-		font-family: inherit;
-		font-size: 18px;
-		font-weight: 400;
-
-		width: 30%;
-		height: 3em;
-		margin-top: 10px;
-
-		border: none;
-		border-radius: 4em;
-
-		color: $light-background;
-		background-color: $accent-purple;
-
-		transition: transform 0.2s ease-in-out;
-
-		&:hover {
-			cursor: pointer;
-			transform: scale(1.05);
 		}
 	}
 }
