@@ -1,5 +1,7 @@
 # My Protfolio
 
+[![DeepSource](https://deepsource.io/gh/d3r1n/d3r1n-website.svg/?label=active+issues&show_trend=true&token=51s5DlzK0SxWSuBoJwGwhgvr)](https://deepsource.io/gh/d3r1n/d3r1n-website/?ref=repository-badge)
+
 This is my protfolio website's last version. Made with Vue.js, TypeScript and SCSS.
 
 ## Environment Variables
