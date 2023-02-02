@@ -2,7 +2,7 @@
 	<div class="projects-repos" v-if="repos" :class="{'light': theme.theme, 'dark': !theme.theme}"	>
 		<div class="header">
 			<h1>Projects</h1>
-			<p>Here are some of my opensource projects</p>
+			<p>Here are some of my open-source projects</p>
 		</div>
 
 		<div class="repos">
