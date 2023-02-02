@@ -1,5 +1,5 @@
 <template>
-	<div class="page-widget projects-page">
+	<div class="page-widget projects-page" :class="{'light': theme.theme, 'dark': !theme.theme}">
 		<Navbar />
 
 		<div class="content">
@@ -13,9 +13,23 @@
 import Navbar from "@/components/TheNavbar.vue";
 import ProjectsLastCommit from "@/components/Projects/ProjectsLastCommit.vue";
 import ProjectsRepos from "@/components/Projects/ProjectsRepos.vue";
+
+import { useTheme } from "@/store/theme";
+
+const theme = useTheme();
 </script>
 
 <style lang="scss">
+.projects-page {
+	&.light {
+		background-color: $light-background;
+	}
+
+	&.dark {
+		background-color: $dark-background;
+	}
+}
+
 .projects-repos {
 	margin-bottom: 1rem;
 }
