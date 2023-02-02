@@ -2,7 +2,7 @@
 	<div class="not-found-page" :class="{'light': theme.theme, 'dark': !theme.theme}">
 		<Navbar />
 		<div class="not-found-page-content">
-			<span>{{ alert }}</span>
+			<span v-html="alert"></span>
 			<h1>404</h1>
 			<h2>Page Not Found</h2>
 			<p>The page you are looking for does not exist.</p>
