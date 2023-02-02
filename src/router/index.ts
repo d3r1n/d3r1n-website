@@ -5,7 +5,14 @@ import Music from "@/views/Music.vue";
 import Projects from "@/views/Projects.vue";
 import NotFound from "@/views/NotFound.vue";
 
-const routes: Array<{ name?: string, path: string; alias?: string[]; component: Object }> = [
+interface Route {
+	name: string;
+	path: string;
+	alias?: string[];
+	component: any;
+}
+
+const routes: Array<Route> = [
 	{ name: "home", path: "/", component: Home },
 	{ name: "music", path: "/music", component: Music },
 	{ name: "projects", path: "/projects", alias: ['/repos'], component: Projects },

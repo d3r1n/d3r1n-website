@@ -1,5 +1,5 @@
 <template>
-	<div class="home-top-repo" v-if="topRepo != null">
+	<div class="home-top-repo" v-if="topRepo !== null">
 		<span class="top-repo-title" :class="{'light': theme.theme, 'dark': !theme.theme}">
 			Top Repository
 		</span>

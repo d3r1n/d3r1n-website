@@ -1,5 +1,5 @@
 <template>
-	<div class="spotify-widget-wrapper" v-if="cp != null">
+	<div class="spotify-widget-wrapper" v-if="cp !== null">
 		<div class="spotify-widget" :class="{'light': theme.theme, 'dark': !theme.theme}">
 			<div class="track">
 				<img class="cover" :src="cp.track.art_url" alt="Track/Album Cover" draggable="false">
@@ -64,7 +64,7 @@ function normalize (val: number, max: number, min: number): number { return (val
 
 // Open Track on Spotify
 function open_on_spotify(): void {
-	if (cp.value != null) {
+	if (cp.value !== null) {
 		window.open(cp.value.track.song_url, '_blank');
 	}
 }
@@ -120,7 +120,7 @@ onMounted(async () => {
 // Watch for changes in the spotify store
 watch(spotify, (new_val) => {
 	// Check if the user is listening to music
-	if (new_val.currently_playing != null) {
+	if (new_val.currently_playing !== null) {
 		// Check if the song is playing else set current playing to null
 		if (new_val.currently_playing.is_playing) {
 			// Update the current playing
@@ -154,9 +154,9 @@ watch(theme, (new_val) => {
 
 onUpdated(() => {
 	// Update the progress bar
-	if (cp.value != null) {
+	if (cp.value !== null) {
 		// Check if the progress bar is null
-		if (progress_bar.value == null) {
+		if (progress_bar.value === null) {
 			// Create a new progress bar
 			progress_bar.value = new ProgressBar.Line('.progress', progress_bar_config);
 		}
@@ -166,7 +166,7 @@ onUpdated(() => {
 	}
 	else {
 		// Destroy the progress bar and set it to null
-		if (progress_bar.value != null) {
+		if (progress_bar.value = null) {
 			progress_bar.value.destroy();
 			progress_bar.value = null;
 		}

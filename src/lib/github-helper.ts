@@ -48,7 +48,7 @@ export class Github {
 	}
 
 	public get_repo_last_commit_hash(repo_name: string): Promise<string> {
-		let hash = fetch(`https://api.github.com/repos/${this.username}/${repo_name}/commits`)
+		const hash = fetch(`https://api.github.com/repos/${this.username}/${repo_name}/commits`)
 		.then((response) => {
 			// Check if the response is ok
 			if (!response.ok) {

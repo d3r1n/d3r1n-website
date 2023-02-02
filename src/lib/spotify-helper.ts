@@ -53,7 +53,7 @@ export class Spotify {
 
 	public async refresh_access_token(): Promise<string> {
 		if (
-			this.access_token != null &&
+			this.access_token !== null &&
 			this.access_token.expires_in > Date.now()
 		) {
 			return this.access_token.access_token;
@@ -70,7 +70,7 @@ export class Spotify {
 			body: `grant_type=refresh_token&refresh_token=${this.refresh_token}`,
 		});
 
-		if (response.status == 200) {
+		if (response.status === 200) {
 			const data = await response.json();
 			this.access_token = {
 				access_token: data.access_token,
@@ -94,7 +94,7 @@ export class Spotify {
 			}
 		);
 
-		if (response.status == 200) {
+		if (response.status === 200) {
 			const data = await response.json();
 			return {
 				track: {
@@ -107,7 +107,7 @@ export class Spotify {
 				duration: data.item.duration_ms,
 				is_playing: data.is_playing,
 			};
-		} else if (response.status == 204) {
+		} else if (response.status === 204) {
 			throw new SpotifyError("No song currently playing");
 		} else {
 			throw new SpotifyError("Error getting currently playing", response);
@@ -127,7 +127,7 @@ export class Spotify {
 			}
 		);
 
-		if (response.status == 200) {
+		if (response.status === 200) {
 			const data = await response.json();
 			return data.items.map((item: any) => {
 				return {
@@ -154,7 +154,7 @@ export class Spotify {
 			}
 		);
 
-		if (response.status == 200) {
+		if (response.status === 200) {
 			const data = await response.json();
 			return data.items.map((item: any) => {
 				return {
@@ -181,7 +181,7 @@ export class Spotify {
 			}
 		);
 
-		if (response.status == 200) {
+		if (response.status === 200) {
 			const data = await response.json();
 			return data.items.map((item: any) => {
 				return {

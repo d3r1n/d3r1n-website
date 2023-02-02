@@ -1,20 +1,25 @@
 <template>
 	<div class="navbar" :class="{'light': theme.theme, 'dark': !theme.theme}">
 		<span class="left-side-buttons">
-			<router-link :to="{name: 'home'}" class="navbar-button" v-html="smile">
+			<router-link :to="{name: 'home'}" class="navbar-button">
+				{{ smile }}
 			</router-link>
 
-			<router-link :to="{name: 'music'}" class="navbar-button" v-html="music">
+			<router-link :to="{name: 'music'}" class="navbar-button">
+				{{ music }}
 			</router-link>
 
-			<router-link :to="{name: 'projects'}" class="navbar-button" v-html="git_branch">
+			<router-link :to="{name: 'projects'}" class="navbar-button">
+				{{ git_branch }}
 			</router-link>
 
-			<router-link :to="{name: 'not-found'}" class="navbar-button" v-html="at_sign">
+			<router-link :to="{name: 'not-found'}" class="navbar-button">
+				{{ at_sign }}
 			</router-link>
 		</span>
 
-		<span class="theme-button" v-on:click="theme.toggle_theme()" v-html="moon">
+		<span class="theme-button" v-on:click="theme.toggle_theme()" >
+			{{ moon }}
 		</span>
 	</div>
 </template>

@@ -30,7 +30,7 @@ onMounted(() => {
 		let recenlty_played = document.querySelector(".recently-played") as HTMLElement;
 
 		if (spotify_elm && recenlty_played) {
-			if (val.currently_playing == null || val.currently_playing.is_playing == false) {
+			if (val.currently_playing === null || val.currently_playing.is_playing === false) {
 				recenlty_played.style.gridRow = "1/3";
 				recenlty_played.style.alignSelf = "flex-start";
 			}

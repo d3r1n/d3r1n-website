@@ -1,6 +1,6 @@
 <template>
 	<div class="last-commit" v-if="lastCommit" :class="{'light': theme.theme, 'dark': !theme.theme}">
-		<div class="icon" v-html="git_commit"></div>
+		<div class="icon">{{ git_commit }}</div>
 
 		<div class="commit-info">
 			<span class="repo-name">{{ repo_name }} -</span>

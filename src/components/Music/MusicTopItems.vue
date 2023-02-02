@@ -1,9 +1,9 @@
 <template>
 	<div class="top-items" :class="{'light': theme.theme, 'dark': !theme.theme}">
-		<div class="header" v-if="currently_selected == 'tracks'">Top Tracks</div>
+		<div class="header" v-if="currently_selected === 'tracks'">Top Tracks</div>
 		<div class="header" v-else>Top Artists</div>
 
-		<div class="items" v-if="currently_selected == 'tracks'">
+		<div class="items" v-if="currently_selected === 'tracks'">
 			<div class="item" v-for="track in top_tracks">
 				<img :src="track.art_url" alt="Album Art" draggable="false">
 
@@ -67,7 +67,7 @@ let anim_interval: any;
 onMounted(() => {
 	let interval: any;
 	let interval_function = () => {
-		if (spotify.top_tracks != null && spotify.top_artists != null) {
+		if (spotify.top_tracks !== null && spotify.top_artists !== null) {
 			top_tracks.value = spotify.top_tracks.map((track) => {
 				if (track.song_name.length > 20) {
 					track.song_name = track.song_name.substring(0, 20) + "...";
@@ -87,7 +87,7 @@ onMounted(() => {
 		elm_items[0].classList.toggle("fade");
 
 		setTimeout(() => {
-			if (currently_selected.value == "tracks") {
+			if (currently_selected.value === "tracks") {
 				currently_selected.value = "artists";
 			}
 			else {

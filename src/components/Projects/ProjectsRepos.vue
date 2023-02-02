@@ -8,7 +8,7 @@
 		<div class="repos">
 			<div class="repo" v-for="repo in repos">
 				<span class="name">
-					<a :href="repo.html_url" target="_blank">{{ repo.name }}</a>
+					<a :href="repo.html_url" target="_blank" rel="noopener noreferrer">{{ repo.name }}</a>
 				</span>
 
 				<span class="description">{{ repo.description }}</span>

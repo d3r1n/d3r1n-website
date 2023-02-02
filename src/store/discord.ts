@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { computed, ref, Ref } from "vue"
-import { DiscordPresence, Discord, DiscordError } from "../lib/discord-helper"
+import { DiscordPresence } from "../lib/discord-helper"
 
 
 export const useDiscordPresence = defineStore("discord-presence", () => {

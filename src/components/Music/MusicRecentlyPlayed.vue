@@ -1,5 +1,5 @@
 <template>
-	<div class="recently-played" v-if="(tracks != null)" :class="{'light': theme.theme, 'dark': !theme.theme}">
+	<div class="recently-played" v-if="(tracks !== null)" :class="{'light': theme.theme, 'dark': !theme.theme}">
 		<h1 class="header">Recently Played</h1>
 		<div class="tracks">
 			<div class="track" v-for="track in tracks" >
@@ -42,7 +42,7 @@ function on_click(track: Track) {
 onMounted(() => {
 	let interval: any;
 	let interval_function = () => {
-		if (spotify.recent_tracks != null) {
+		if (spotify.recent_tracks !== null) {
 			tracks.value = spotify.recent_tracks;
 			clearInterval(interval);
 		}
@@ -53,7 +53,7 @@ onMounted(() => {
 
 // Shorten all track names
 watch(tracks, (new_tracks) => {
-	if (new_tracks == null) return;
+	if (new_tracks === null) return;
 
 	new_tracks.forEach((track) => {
 		if (track.song_name.length > 20) {

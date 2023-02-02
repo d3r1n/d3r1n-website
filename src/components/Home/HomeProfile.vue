@@ -74,14 +74,14 @@ watch([presence, spotify], ([new_presence, new_spotify]) => {
 		status_color.value = "#99aab5"
 	}
 
-	if (new_presence.presence_text != null) {
+	if (new_presence.presence_text !== null) {
 		if (new_presence.presence_text.length > 0) {
 			presence_text.value += ` | ${presence.presence_text}`
 		}
 	}
 
-	if (new_presence.presence_text == null) {
-		if (new_spotify.currently_playing != null && new_spotify.currently_playing.is_playing) {
+	if (new_presence.presence_text === null) {
+		if (new_spotify.currently_playing !== null && new_spotify.currently_playing.is_playing) {
 			presence_text.value += " | Listening to Spotify"
 		}
 	}
