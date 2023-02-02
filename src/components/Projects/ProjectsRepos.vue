@@ -202,10 +202,13 @@ onMounted(() => {
 	@media screen and (max-width: 1000px) {
 		// header
 		.header {
-			margin-left: 2rem;
+			margin-top: 1rem;
+			width: 90%;
 		}
 
 		.repos {
+			width: 90%;
+			padding: 0;
 			grid-template-columns: repeat(1, minmax(300px, 1fr));
 		}
 	}
