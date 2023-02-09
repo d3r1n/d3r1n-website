@@ -1,2 +1,5 @@
 build
 .vscode
+src/components/TheNavbar.vue
+src/components/Home/HomeProfile.vue
+src/components/Music/MusicSpotifyWidget.vue
