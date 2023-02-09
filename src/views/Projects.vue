@@ -20,12 +20,12 @@ import ProjectsRepos from "@/components/Projects/ProjectsRepos.vue";
 import { useTheme } from "@/store/theme";
 import { useIntervalState } from "@/store/interval-state";
 
-import { onMounted } from "vue";
+import { onBeforeMount } from "vue";
 
 const theme = useTheme();
 const interval_state = useIntervalState();
 
-onMounted(() => {
+onBeforeMount(() => {
 	// Change interval state
 	interval_state.set_interval(false);
 });

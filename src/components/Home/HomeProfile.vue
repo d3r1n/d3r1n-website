@@ -47,11 +47,11 @@ const helper = new Discord(import.meta.env.VITE_DISCORD_ID)
 let interval: any;
 
 onMounted(async () => {
-	// Check if interval state is active
-	if (!interval_state.interval) return;
-
 	// Set an interval to update presence every 500ms
 	const interval_function = () => {
+		// Check if interval state is active
+		if (!interval_state.interval) return;
+		
 		helper.get_presence().then((_presence) => {
 			// Update Presence
 			presence.presence = _presence;
