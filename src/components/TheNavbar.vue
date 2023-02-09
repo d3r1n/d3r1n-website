@@ -14,7 +14,7 @@
 			</router-link>
 		</span>
 
-		<span class="theme-button" v-on:click="theme.toggle_theme()" v-html="moon">
+		<span class="theme-button" v-on:click="theme.toggle_theme" @click="play_theme_click" v-html="moon">
 		</span>
 	</div>
 </template>
@@ -29,7 +29,29 @@ import smile from "@/assets/svg/smile.svg?raw";
 import music from "@/assets/svg/music.svg?raw";
 import moon from "@/assets/svg/moon.svg?raw";
 
+import button_click from "@/assets/audio/button-click.mp3";
+import theme_button_click from "@/assets/audio/button-latch-click.wav";
+
 const theme = useTheme();
+
+function play_button_click() {
+	const audio = new Audio(button_click);
+	audio.play();
+}
+
+function play_theme_click() {
+	const audio = new Audio(theme_button_click);
+	audio.play();
+}
+
+onMounted(() => {
+	const buttons = document.querySelectorAll(".navbar-button");
+
+	buttons.forEach((button) => {
+		button.addEventListener("click", play_button_click);
+	});
+});
+
 </script>
 
 <style lang="scss">
