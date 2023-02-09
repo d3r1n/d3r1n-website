@@ -20,18 +20,11 @@ import MusicTopItems from "@/components/Music/MusicTopItems.vue";
 
 import { useTheme } from "@/store/theme";
 import { useSpotify } from "@/store/spotify";
-import { useIntervalState } from "@/store/interval-state";
 
 import { onBeforeMount, onMounted, watch } from "vue";
 
 const theme = useTheme();
 const spotify = useSpotify();
-const interval_state = useIntervalState();
-
-onBeforeMount(() => {
-	// Change interval state
-	interval_state.set_interval(true);
-});
 
 onMounted(() => {
 	watch(spotify, (val) => {
