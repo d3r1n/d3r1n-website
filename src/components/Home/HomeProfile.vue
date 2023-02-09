@@ -31,10 +31,13 @@
 import { useDiscordPresence } from "@/store/discord"
 import { Discord, DiscordError } from "@/lib/discord-helper"
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+
 import { useSpotify } from "@/store/spotify";
+import { useIntervalState } from "@/store/interval-state";
 
 const presence = useDiscordPresence()
 const spotify = useSpotify();
+const interval_state = useIntervalState();
 
 const presence_text = ref("")
 const status_color = ref("")
@@ -44,6 +47,9 @@ const helper = new Discord(import.meta.env.VITE_DISCORD_ID)
 let interval: any;
 
 onMounted(async () => {
+	// Check if interval state is active
+	if (!interval_state.interval) return;
+
 	// Set an interval to update presence every 500ms
 	const interval_function = () => {
 		helper.get_presence().then((_presence) => {

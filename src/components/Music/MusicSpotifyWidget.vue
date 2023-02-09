@@ -35,6 +35,7 @@ import { Spotify, SpotifyError, CurrentlyPlaying, Track } from "@/lib/spotify-he
 // Stores
 import { useSpotify } from "@/store/spotify";
 import { useTheme } from "@/store/theme";
+import { useIntervalState } from "@/store/interval-state";
 
 // Setup Route
 const route = useRoute();
@@ -42,6 +43,7 @@ const route = useRoute();
 // Setup Stores
 const theme = useTheme();
 const spotify = useSpotify();
+const interval_state = useIntervalState();
 
 // Setup Refs
 const cp = ref<CurrentlyPlaying | null>(null);
@@ -99,6 +101,8 @@ onMounted(async () => {
 	}
 
 	interval = setInterval(async () => {
+		// Check if the interval is active
+		if (!interval_state.interval) return;
 
 		// Get the currently playing track
 		try {

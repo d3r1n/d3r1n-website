@@ -21,8 +21,17 @@ import HomeTopRepo from "@/components/Home/HomeTopRepo.vue";
 import HomeAbout from "@/components/Home/HomeAbout.vue";
 
 import { useTheme } from "@/store/theme";
+import { useIntervalState } from "@/store/interval-state";
+
+import { onMounted } from "vue";
 
 const theme = useTheme();
+const interval_state = useIntervalState();
+
+onMounted(() => {
+	// Change interval state
+	interval_state.set_interval(true);
+});
 </script>
 
 <style lang="scss">

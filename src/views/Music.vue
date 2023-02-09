@@ -17,14 +17,21 @@ import Navbar from "@/components/TheNavbar.vue";
 import MusicSpotifyWidget from "@/components/Music/MusicSpotifyWidget.vue";
 import MusicRecentlyPlayed from "@/components/Music/MusicRecentlyPlayed.vue";
 import MusicTopItems from "@/components/Music/MusicTopItems.vue";
+
 import { useTheme } from "@/store/theme";
 import { useSpotify } from "@/store/spotify";
+import { useIntervalState } from "@/store/interval-state";
+
 import { onMounted, watch } from "vue";
 
 const theme = useTheme();
 const spotify = useSpotify();
+const interval_state = useIntervalState();
 
 onMounted(() => {
+	// Change interval state
+	interval_state.set_interval(true);
+
 	watch(spotify, (val) => {
 		let spotify_elm = document.querySelector(".spotify-widget-wrapper") as HTMLElement;
 		let recenlty_played = document.querySelector(".recently-played") as HTMLElement;
