@@ -56,12 +56,12 @@ const getRepos = async () => {
 	try {
 		let res = await github.get_repos();
 		// filter repos
-		let filtered_repos = projects_filter.filtered_repositories;
+		const filtered_repos = projects_filter.filtered_repositories;
 		res = res.filter((repo) => {
 			return filtered_repos.includes(repo.name);
 		});
 
-		let custom_details = projects_filter.custom_repository_details;
+		const custom_details = projects_filter.custom_repository_details;
 		res.forEach((repo) => {
 			//@ts-ignore
 			repo.description = custom_details[repo.name].description;
