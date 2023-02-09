@@ -15,8 +15,18 @@ interface Route {
 const routes: Array<Route> = [
 	{ name: "home", path: "/", component: Home },
 	{ name: "music", path: "/music", component: Music },
-	{ name: "projects", path: "/projects", alias: ['/repos'], component: Projects },
-	{ name: "not-found", path: "/404", alias:[ "/:pathMatch(.*)*" ], component: NotFound }
+	{
+		name: "projects",
+		path: "/projects",
+		alias: ["/repos"],
+		component: Projects,
+	},
+	{
+		name: "not-found",
+		path: "/404",
+		alias: ["/:pathMatch(.*)*"],
+		component: NotFound,
+	},
 ];
 
 const router: Router = createRouter({

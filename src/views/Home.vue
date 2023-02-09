@@ -1,13 +1,13 @@
 <template>
-	<div class="home-page" :class="{'light': theme.theme, 'dark': !theme.theme}">
+	<div class="home-page" :class="{ light: theme.theme, dark: !theme.theme }">
 		<Navbar />
-		
+
 		<div class="content">
 			<div class="grid">
 				<HomeProfile />
 				<MusicSpotifyWidget />
 				<HomeAbout />
-				<HomeTopRepo />	
+				<HomeTopRepo />
 			</div>
 		</div>
 	</div>
@@ -102,7 +102,8 @@ onMounted(() => {
 						font-size: 20px;
 					}
 
-					.repo-desc, .repo-info span {
+					.repo-desc,
+					.repo-info span {
 						font-size: 18px;
 					}
 				}
@@ -122,7 +123,7 @@ onMounted(() => {
 
 	@media screen and (max-width: 1000px) {
 		.navbar {
-			margin-bottom: 30px
+			margin-bottom: 30px;
 		}
 	}
 }

@@ -1,11 +1,13 @@
 <template>
-	<div class="top-items" :class="{'light': theme.theme, 'dark': !theme.theme}">
-		<div class="header" v-if="currently_selected === 'tracks'">Top Tracks</div>
+	<div class="top-items" :class="{ light: theme.theme, dark: !theme.theme }">
+		<div class="header" v-if="currently_selected === 'tracks'">
+			Top Tracks
+		</div>
 		<div class="header" v-else>Top Artists</div>
 
 		<div class="items" v-if="currently_selected === 'tracks'">
 			<div class="item" v-for="track in top_tracks">
-				<img :src="track.art_url" alt="Album Art" draggable="false">
+				<img :src="track.art_url" alt="Album Art" draggable="false" />
 
 				<span class="item-info">
 					<span class="item-name" @click="on_click(track)">
@@ -20,7 +22,7 @@
 
 		<div class="items" v-else>
 			<div class="item" v-for="artist in top_artists">
-				<img :src="artist.art_url" alt="Album Art" draggable="false">
+				<img :src="artist.art_url" alt="Album Art" draggable="false" />
 
 				<span class="item-info">
 					<span class="item-name" @click="on_click(artist)">
@@ -77,26 +79,26 @@ onMounted(() => {
 			top_artists.value = spotify.top_artists;
 			clearInterval(interval);
 		}
-	}
+	};
 
 	interval = setInterval(interval_function, 100);
 
 	// Change the currently selected item
 	anim_interval = setInterval(() => {
-		const elm_items = document.getElementsByClassName("top-items") as HTMLCollectionOf<HTMLElement>;
+		const elm_items = document.getElementsByClassName(
+			"top-items"
+		) as HTMLCollectionOf<HTMLElement>;
 		elm_items[0].classList.toggle("fade");
 
 		setTimeout(() => {
 			if (currently_selected.value === "tracks") {
 				currently_selected.value = "artists";
-			}
-			else {
+			} else {
 				currently_selected.value = "tracks";
 			}
 
 			elm_items[0].classList.toggle("fade");
 		}, 1000);
-
 	}, 10 * 1000);
 });
 
@@ -142,7 +144,7 @@ onBeforeUnmount(() => {
 
 			border-radius: 15px;
 			overflow: hidden;
-				
+
 			img {
 				width: 100px;
 				border-radius: 15px 0 0 15px;

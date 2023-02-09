@@ -1,12 +1,18 @@
 <template>
-	<div class="not-found-page" :class="{'light': theme.theme, 'dark': !theme.theme}">
+	<div
+		class="not-found-page"
+		:class="{ light: theme.theme, dark: !theme.theme }"
+	>
 		<Navbar />
 		<div class="not-found-page-content">
 			<span v-html="alert"></span>
 			<h1>404</h1>
 			<h2>Page Not Found</h2>
 			<p>The page you are looking for does not exist.</p>
-			<p>Try going back to the <router-link class="home-link" to="/">Home Page</router-link>.</p>
+			<p>
+				Try going back to the
+				<router-link class="home-link" to="/">Home Page</router-link>.
+			</p>
 		</div>
 	</div>
 </template>
@@ -36,7 +42,7 @@ onMounted(() => {
 	align-items: center;
 
 	min-height: 100%;
-	
+
 	.navbar {
 		justify-self: flex-start;
 		margin-bottom: 30px;
@@ -94,8 +100,10 @@ onMounted(() => {
 			font-size: 24px;
 			text-decoration: underline;
 
-			&:hover, &:focus, &:active {
-				color: inherit
+			&:hover,
+			&:focus,
+			&:active {
+				color: inherit;
 			}
 		}
 	}

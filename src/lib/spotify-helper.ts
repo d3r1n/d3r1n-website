@@ -1,5 +1,5 @@
 // Import Buffer (browser version)
-import { Buffer } from 'buffer/';
+import { Buffer } from "buffer/";
 
 export class SpotifyError extends Error {
 	constructor(message: string, cause?: unknown) {
@@ -81,7 +81,7 @@ export class Spotify {
 			throw new SpotifyError("Error refreshing access token", response);
 		}
 	}
-	
+
 	public async get_currently_playing(): Promise<CurrentlyPlaying> {
 		const access_token = await this.refresh_access_token();
 
@@ -113,7 +113,6 @@ export class Spotify {
 			throw new SpotifyError("Error getting currently playing", response);
 		}
 	}
-	
 
 	public async get_recently_played(limit: number): Promise<Array<Track>> {
 		const access_token = await this.refresh_access_token();

@@ -1,5 +1,9 @@
 <template>
-	<div class="projects-repos" v-if="repos" :class="{'light': theme.theme, 'dark': !theme.theme}"	>
+	<div
+		class="projects-repos"
+		v-if="repos"
+		:class="{ light: theme.theme, dark: !theme.theme }"
+	>
 		<div class="header">
 			<h1>Projects</h1>
 			<p>Here are some of my open-source projects</p>
@@ -8,7 +12,12 @@
 		<div class="repos">
 			<div class="repo" v-for="repo in repos">
 				<span class="name">
-					<a :href="repo.html_url" target="_blank" rel="noopener noreferrer">{{ repo.name }}</a>
+					<a
+						:href="repo.html_url"
+						target="_blank"
+						rel="noopener noreferrer"
+						>{{ repo.name }}</a
+					>
 				</span>
 
 				<span class="description">{{ repo.description }}</span>
@@ -32,11 +41,11 @@
 </template>
 
 <script setup lang="ts">
-import { Github, GithubError, Repository } from '@/lib/github-helper';
-import { onMounted, ref } from 'vue';
-import { useTheme } from '@/store/theme';
+import { Github, GithubError, Repository } from "@/lib/github-helper";
+import { onMounted, ref } from "vue";
+import { useTheme } from "@/store/theme";
 
-import projects_filter from '@/assets/json/projects_filter.json';
+import projects_filter from "@/assets/json/projects_filter.json";
 
 const github = new Github(import.meta.env.VITE_GITHUB_USERNAME);
 const theme = useTheme();
@@ -48,12 +57,12 @@ const getRepos = async () => {
 		let res = await github.get_repos();
 		// filter repos
 		let filtered_repos = projects_filter.filtered_repositories;
-		res = res.filter(repo => {
+		res = res.filter((repo) => {
 			return filtered_repos.includes(repo.name);
 		});
-		
+
 		let custom_details = projects_filter.custom_repository_details;
-		res.forEach(repo => {
+		res.forEach((repo) => {
 			//@ts-ignore
 			repo.description = custom_details[repo.name].description;
 			//@ts-ignore
@@ -125,7 +134,7 @@ onMounted(() => {
 
 			width: 100%;
 			height: 100%;
-			
+
 			gap: 1rem;
 			padding: 1rem;
 			border-radius: 15px;

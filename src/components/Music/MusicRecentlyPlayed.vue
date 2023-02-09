@@ -1,9 +1,13 @@
 <template>
-	<div class="recently-played" v-if="(tracks !== null)" :class="{'light': theme.theme, 'dark': !theme.theme}">
+	<div
+		class="recently-played"
+		v-if="tracks !== null"
+		:class="{ light: theme.theme, dark: !theme.theme }"
+	>
 		<h1 class="header">Recently Played</h1>
 		<div class="tracks">
-			<div class="track" v-for="track in tracks" >
-				<img :src="track.art_url" alt="Album Art" draggable="false">
+			<div class="track" v-for="track in tracks">
+				<img :src="track.art_url" alt="Album Art" draggable="false" />
 
 				<span class="track-info">
 					<span class="track-name" @click="on_click(track)">
@@ -46,7 +50,7 @@ onMounted(() => {
 			tracks.value = spotify.recent_tracks;
 			clearInterval(interval);
 		}
-	}
+	};
 
 	interval = setInterval(interval_function, 100);
 });
@@ -63,7 +67,6 @@ watch(tracks, (new_tracks) => {
 
 	tracks.value = new_tracks;
 });
-
 </script>
 
 <style lang="scss">
@@ -101,7 +104,7 @@ watch(tracks, (new_tracks) => {
 
 			border-radius: 15px;
 			overflow: hidden;
-			
+
 			img {
 				width: 100px;
 				border-radius: 15px 0 0 15px;

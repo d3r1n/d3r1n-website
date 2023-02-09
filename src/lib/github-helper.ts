@@ -27,7 +27,9 @@ export class Github {
 	}
 
 	public async get_repos(): Promise<Repository[]> {
-		const response = await fetch(`https://api.github.com/users/${this.username}/repos`);
+		const response = await fetch(
+			`https://api.github.com/users/${this.username}/repos`
+		);
 		if (!response.ok) {
 			throw new GithubError("Failed to fetch repositories");
 		}
@@ -48,15 +50,17 @@ export class Github {
 	}
 
 	public get_repo_last_commit_hash(repo_name: string): Promise<string> {
-		const hash = fetch(`https://api.github.com/repos/${this.username}/${repo_name}/commits`)
-		.then((response) => {
-			// Check if the response is ok
-			if (!response.ok) {
-				throw new GithubError("Failed to fetch commits");
-			}
-			return response.json();
-		})
-		.then((commits) => commits[0].sha);
+		const hash = fetch(
+			`https://api.github.com/repos/${this.username}/${repo_name}/commits`
+		)
+			.then((response) => {
+				// Check if the response is ok
+				if (!response.ok) {
+					throw new GithubError("Failed to fetch commits");
+				}
+				return response.json();
+			})
+			.then((commits) => commits[0].sha);
 
 		return hash;
 	}

@@ -1,11 +1,19 @@
 <template>
-	<div class="last-commit" v-if="lastCommit" :class="{'light': theme.theme, 'dark': !theme.theme}">
+	<div
+		class="last-commit"
+		v-if="lastCommit"
+		:class="{ light: theme.theme, dark: !theme.theme }"
+	>
 		<div class="icon" v-html="git_commit"></div>
 
 		<div class="commit-info">
 			<span class="repo-name">{{ repo_name }} -</span>
 			<span class="commit-hash">
-				<a :href="`https://github.com/${github.username}/${repo_name}/commit/${lastCommit}`" target="_blank" rel="noopener noreferrer">
+				<a
+					:href="`https://github.com/${github.username}/${repo_name}/commit/${lastCommit}`"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					{{ lastCommit.slice(0, 7) }}
 				</a>
 			</span>
@@ -14,9 +22,9 @@
 </template>
 
 <script setup lang="ts">
-import { Github, GithubError } from '@/lib/github-helper';
-import { onMounted, ref } from 'vue';
-import { useTheme } from '@/store/theme';
+import { Github, GithubError } from "@/lib/github-helper";
+import { onMounted, ref } from "vue";
+import { useTheme } from "@/store/theme";
 
 import git_commit from "@/assets/svg/git-commit.svg?raw";
 
@@ -27,15 +35,18 @@ const lastCommit = ref<null | string>(null);
 const repo_name = "d3r1n-website";
 
 onMounted(() => {
-	github.get_repo_last_commit_hash(repo_name).then((hash) => {
-		lastCommit.value = hash;
-	}).catch((e) => {
-		if (e instanceof GithubError) {
-			console.error(e.message);
-		} else {
-			console.error(e);
-		}
-	});
+	github
+		.get_repo_last_commit_hash(repo_name)
+		.then((hash) => {
+			lastCommit.value = hash;
+		})
+		.catch((e) => {
+			if (e instanceof GithubError) {
+				console.error(e.message);
+			} else {
+				console.error(e);
+			}
+		});
 });
 </script>
 

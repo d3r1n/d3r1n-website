@@ -1,10 +1,16 @@
 <template>
 	<div class="home-top-repo" v-if="topRepo !== null">
-		<span class="top-repo-title" :class="{'light': theme.theme, 'dark': !theme.theme}">
+		<span
+			class="top-repo-title"
+			:class="{ light: theme.theme, dark: !theme.theme }"
+		>
 			Top Repository
 		</span>
 
-		<div class="top-repo-wrapper" :class="{'light': theme.theme, 'dark': !theme.theme}">
+		<div
+			class="top-repo-wrapper"
+			:class="{ light: theme.theme, dark: !theme.theme }"
+		>
 			<div class="repo-title" @click="openGithub">
 				{{ topRepo.name }}
 			</div>
@@ -33,9 +39,9 @@
 </template>
 
 <script setup lang="ts">
-import { useTheme } from '@/store/theme';
-import { Github, GithubError, Repository } from '@/lib/github-helper';
-import { onMounted, ref } from 'vue';
+import { useTheme } from "@/store/theme";
+import { Github, GithubError, Repository } from "@/lib/github-helper";
+import { onMounted, ref } from "vue";
 
 const theme = useTheme();
 const topRepo = ref<Repository | null>(null);
@@ -43,7 +49,7 @@ const topRepo = ref<Repository | null>(null);
 const github = new Github(import.meta.env.VITE_GITHUB_USERNAME);
 
 const openGithub = () => {
-	window.open(topRepo.value?.html_url, '_blank');
+	window.open(topRepo.value?.html_url, "_blank");
 };
 
 const getTopRepo = async () => {
@@ -62,7 +68,6 @@ const getTopRepo = async () => {
 onMounted(() => {
 	getTopRepo();
 });
-
 </script>
 
 <style lang="scss">
@@ -114,7 +119,7 @@ onMounted(() => {
 			font-size: 1.25em;
 			margin-bottom: 15px;
 		}
-		
+
 		.repo-info {
 			display: flex;
 			flex-direction: row;

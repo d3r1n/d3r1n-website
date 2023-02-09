@@ -1,7 +1,7 @@
 <template>
-	<div class="music-page" :class="{'light': theme.theme, 'dark': !theme.theme}">
+	<div class="music-page" :class="{ light: theme.theme, dark: !theme.theme }">
 		<Navbar />
-		
+
 		<div class="content">
 			<div class="grid">
 				<MusicSpotifyWidget />
@@ -33,22 +33,27 @@ onMounted(() => {
 	interval_state.set_interval(true);
 
 	watch(spotify, (val) => {
-		let spotify_elm = document.querySelector(".spotify-widget-wrapper") as HTMLElement;
-		let recenlty_played = document.querySelector(".recently-played") as HTMLElement;
+		let spotify_elm = document.querySelector(
+			".spotify-widget-wrapper"
+		) as HTMLElement;
+		let recenlty_played = document.querySelector(
+			".recently-played"
+		) as HTMLElement;
 
 		if (spotify_elm && recenlty_played) {
-			if (val.currently_playing === null || val.currently_playing.is_playing === false) {
+			if (
+				val.currently_playing === null ||
+				val.currently_playing.is_playing === false
+			) {
 				recenlty_played.style.gridRow = "1/3";
 				recenlty_played.style.alignSelf = "flex-start";
-			}
-			else {
+			} else {
 				recenlty_played.style.gridRow = "2/3";
 				recenlty_played.style.alignSelf = "center";
 			}
 		}
 	});
 });
-
 </script>
 
 <style lang="scss">
@@ -85,10 +90,9 @@ onMounted(() => {
 
 			margin-bottom: 30px;
 
-
 			.spotify-widget-wrapper {
 				justify-self: center;
-				
+
 				height: max-content;
 			}
 
@@ -111,7 +115,8 @@ onMounted(() => {
 				grid-template-columns: 1fr;
 				grid-template-rows: auto auto auto;
 
-				.top-items, .recently-played {
+				.top-items,
+				.recently-played {
 					justify-self: center;
 				}
 
@@ -129,7 +134,6 @@ onMounted(() => {
 					grid-column: 1 / 2;
 				}
 			}
-
 		}
 	}
 

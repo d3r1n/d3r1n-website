@@ -1,5 +1,8 @@
 <template>
-	<div class="page-widget projects-page" :class="{'light': theme.theme, 'dark': !theme.theme}">
+	<div
+		class="page-widget projects-page"
+		:class="{ light: theme.theme, dark: !theme.theme }"
+	>
 		<Navbar />
 
 		<div class="content">
