@@ -1,5 +1,9 @@
 @import "./variables.scss";
 
+button {
+	all: unset;
+}
+
 .page-widget {
 	display: flex;
 	flex-direction: column;

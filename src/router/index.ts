@@ -1,9 +1,10 @@
 import { createRouter, Router, createWebHistory } from "vue-router";
 // Import Components
-import Home from "@/views/Home.vue";
-import Music from "@/views/Music.vue";
-import Projects from "@/views/Projects.vue";
-import NotFound from "@/views/NotFound.vue";
+import Home 		from "@/views/Home.vue";
+import Music 		from "@/views/Music.vue";
+import Projects 	from "@/views/Projects.vue";
+import Contact 		from "@/views/Contact.vue";
+import NotFound 	from "@/views/NotFound.vue";
 
 interface Route {
 	name: string;
@@ -21,6 +22,7 @@ const routes: Array<Route> = [
 		alias: ["/repos"],
 		component: Projects,
 	},
+	{ name: "contact", path: "/contact", component: Contact },
 	{
 		name: "not-found",
 		path: "/404",

@@ -10,12 +10,12 @@
 			<router-link :to="{name: 'projects'}" class="navbar-button" v-html="git_branch">
 			</router-link>
 
-			<router-link :to="{name: 'not-found'}" class="navbar-button" v-html="at_sign">
+			<router-link :to="{name: 'contact'}" class="navbar-button" v-html="at_sign">
 			</router-link>
 		</span>
 
-		<span class="theme-button" v-on:click="theme.toggle_theme" @click="play_theme_click" v-html="moon">
-		</span>
+		<button class="theme-button" v-on:click="theme.toggle_theme" @click="play_theme_click" v-html="moon">
+		</button>
 	</div>
 </template>
 
@@ -90,6 +90,7 @@ onMounted(() => {
 		svg {
 			width: 50px;
 			height: 50px;
+			transition: stroke 0.2s ease-in-out;
 		}
 
 		&:hover {
