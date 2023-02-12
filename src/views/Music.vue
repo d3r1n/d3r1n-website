@@ -60,7 +60,6 @@ onMounted(() => {
 
 	.navbar {
 		justify-self: flex-start;
-		margin-bottom: 30px;
 	}
 
 	.content {

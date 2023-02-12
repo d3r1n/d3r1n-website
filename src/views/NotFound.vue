@@ -38,7 +38,6 @@ const theme = useTheme();
 
 	.navbar {
 		justify-self: flex-start;
-		margin-bottom: 30px;
 	}
 
 	.not-found-page-content {

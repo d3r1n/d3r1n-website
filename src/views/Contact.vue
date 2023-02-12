@@ -169,10 +169,12 @@ onMounted(() => {
 	}
 
 	@media screen and (max-width: 1000px) {
-		position: relative;
-		top: unset;
-		left: unset;
-		transform: unset;
+		.content {
+			position: relative;
+			top: unset;
+			left: unset;
+			transform: unset;
+		}
 
 		.content .links {
 			flex-direction: column;

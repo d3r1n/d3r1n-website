@@ -113,11 +113,5 @@ const theme = useTheme();
 		background-color: $dark-background;
 		color: $dark-foreground;
 	}
-
-	@media screen and (max-width: 1000px) {
-		.navbar {
-			margin-bottom: 30px;
-		}
-	}
 }
 </style>

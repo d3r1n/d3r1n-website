@@ -137,6 +137,7 @@ onMounted(() => {
 @media (max-width: 1000px) {
 	.navbar {
 		justify-content: space-evenly;
+		margin-bottom: 30px;
 
 		.navbar-button, .theme-button {
 			width: 60px;
