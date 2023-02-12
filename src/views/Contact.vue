@@ -174,6 +174,7 @@ onMounted(() => {
 			top: unset;
 			left: unset;
 			transform: unset;
+			margin-bottom: 30px;
 		}
 
 		.content .links {
