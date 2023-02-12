@@ -70,6 +70,11 @@ onMounted(() => {
 <style lang="scss">
 .contact-page {
 	.content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
 		.header {
 			display: flex;
 			flex-direction: column;
