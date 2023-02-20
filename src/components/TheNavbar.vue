@@ -1,21 +1,22 @@
 <template>
 	<div class="navbar" :class="{'light': theme.theme, 'dark': !theme.theme}">
-		<span class="left-side-buttons">
-			<router-link :to="{name: 'home'}" class="navbar-button" v-html="smile">
-			</router-link>
+		<router-link :to="{name: 'home'}" class="navbar-button" v-html="smile">
+		</router-link>
 
-			<router-link :to="{name: 'music'}" class="navbar-button" v-html="music">
-			</router-link>
+		<router-link :to="{name: 'music'}" class="navbar-button" v-html="music">
+		</router-link>
 
-			<router-link :to="{name: 'projects'}" class="navbar-button" v-html="git_branch">
-			</router-link>
+		<router-link :to="{name: 'projects'}" class="navbar-button" v-html="git_branch">
+		</router-link>
 
-			<router-link :to="{name: 'contact'}" class="navbar-button" v-html="at_sign">
-			</router-link>
-		</span>
+		<router-link :to="{name: 'contact'}" class="navbar-button" v-html="at_sign">
+		</router-link>
 
-		<button class="theme-button" v-on:click="theme.toggle_theme" @click="play_theme_click" v-html="moon">
+		<a href="https://blog.d3r1n.com/" class="navbar-button" v-html="blog"></a>
+
+		<button class="navbar-button" v-on:click="theme.toggle_theme" @click="play_theme_click" v-html="moon">
 		</button>
+
 	</div>
 </template>
 
@@ -27,6 +28,7 @@ import at_sign from "@/assets/svg/at-sign.svg?raw";
 import git_branch from "@/assets/svg/git-branch.svg?raw";
 import smile from "@/assets/svg/smile.svg?raw";
 import music from "@/assets/svg/music.svg?raw";
+import blog from "@/assets/svg/blog.svg?raw";
 import moon from "@/assets/svg/moon.svg?raw";
 
 import button_click from "@/assets/audio/button-click.mp3";
@@ -59,24 +61,14 @@ onMounted(() => {
 	overflow: hidden;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
 
 	width: 90%;
 	height: 100%;
 	margin-top: 15px;
 	overflow: visible;
 
-	.left-side-buttons {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		align-self: flex-start;
-
-		width: min-content;
-		height: 100%;
-	}
-
-	.navbar-button, .theme-button {
+	.navbar-button {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -93,18 +85,21 @@ onMounted(() => {
 			transition: stroke 0.2s ease-in-out;
 		}
 
+		margin-right:15px;
+
+		&:nth-child(5) {
+			margin-right: 0;
+		}
+
 		&:hover {
 			cursor: pointer;
 			transform: scale(1.05);
 		}
 	}
 
-	.navbar-button {
-		margin-right:15px;
-
-		&:last-child {
-			margin-right: 0;
-		}
+	.navbar-button:last-child {
+		margin-right: 0;
+		margin-left: auto;
 	}
 
 	&.light, &.dark {
@@ -114,7 +109,7 @@ onMounted(() => {
 	}
 
 	&.light {
-		.navbar-button, .theme-button {
+		.navbar-button {
 			background-color: $light-secondary;
 			
 			svg {
@@ -124,7 +119,7 @@ onMounted(() => {
 	}
 
 	&.dark {
-		.navbar-button, .theme-button {
+		.navbar-button {
 			background-color: $dark-secondary;
 			
 			svg {
@@ -136,29 +131,25 @@ onMounted(() => {
 
 @media (max-width: 1000px) {
 	.navbar {
+		width: 100%;
 		justify-content: space-evenly;
+
 		margin-bottom: 30px;
 
-		.navbar-button, .theme-button {
-			width: 60px;
-			height: 60px;
+		.navbar-button {
+			width: 50px;
+			height: 50px;
 
 			svg {
-				width: 60%;
-				height: 60%;
+				width: 50%;
+				height: 50%;
 			}
-		}
 
-		.theme-button {
-			margin-left: 10px;
-		}
-
-		.navbar-button {
-			margin-right: 10px;
+			margin-right: 0;
 		}
 
 		.navbar-button:last-child {
-			margin-right: 0;
+			margin-left: 0;
 		}
 	}
 }
