@@ -12,7 +12,7 @@
 		<router-link :to="{name: 'contact'}" class="navbar-button" v-html="at_sign">
 		</router-link>
 
-		<a href="https://blog.d3r1n.com/" class="navbar-button" v-html="blog"></a>
+		<a href="https://dev.to/d3r1n" class="navbar-button" v-html="blog"></a>
 
 		<button class="navbar-button" v-on:click="theme.toggle_theme" @click="play_theme_click" v-html="moon">
 		</button>
