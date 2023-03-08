@@ -1,5 +1,5 @@
 <template>
-	<RouterView />
+    <RouterView />
 </template>
 
 <script lang="ts"></script>
@@ -8,21 +8,22 @@
 body,
 html,
 #app {
-	position: absolute;
-	height: 100%;
-	left: 0;
-	top: 0;
-	width: 100%;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
 }
+
 body {
-	margin: 0;
-	padding: 0;
-	font-family: "JetBrains Mono", monospace;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: "JetBrains Mono", monospace;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 body::-webkit-scrollbar {
-	display: none;
+    display: none;
 }
 </style>

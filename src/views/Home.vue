@@ -1,16 +1,16 @@
 <template>
-	<div class="home-page" :class="{ light: theme.theme, dark: !theme.theme }">
-		<Navbar />
+    <div class="home-page" :class="{ light: theme.theme, dark: !theme.theme }">
+        <Navbar />
 
-		<div class="content">
-			<div class="grid">
-				<HomeProfile />
-				<MusicSpotifyWidget />
-				<HomeAbout />
-				<HomeTopRepo />
-			</div>
-		</div>
-	</div>
+        <div class="content">
+            <div class="grid">
+                <HomeProfile />
+                <MusicSpotifyWidget />
+                <HomeAbout />
+                <HomeTopRepo />
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -29,89 +29,89 @@ const theme = useTheme();
 
 <style lang="scss">
 .home-page {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
 
-	.navbar {
-		justify-self: flex-start;
-	}
+    .navbar {
+        justify-self: flex-start;
+    }
 
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		flex: 1;
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        flex: 1;
 
-		.grid {
-			justify-self: center;
-			display: grid;
-			width: 90%;
-			height: min-content;
-			grid-template-columns: 7fr 3fr;
-			grid-template-rows: 1fr 1fr;
-			align-items: center;
-			justify-items: center;
+        .grid {
+            justify-self: center;
+            display: grid;
+            width: 90%;
+            height: min-content;
+            grid-template-columns: 7fr 3fr;
+            grid-template-rows: 1fr 1fr;
+            align-items: center;
+            justify-items: center;
 
-			gap: 30px;
+            gap: 30px;
 
-			.home-profile {
-				justify-self: stretch;
-			}
+            .home-profile {
+                justify-self: stretch;
+            }
 
-			.spotify-widget-wrapper {
-				max-width: 550px;
-			}
+            .spotify-widget-wrapper {
+                max-width: 550px;
+            }
 
-			.home-about {
-				justify-self: stretch;
-				width: 80%;
-				height: max-content;
-				max-width: 800px;
-			}
+            .home-about {
+                justify-self: stretch;
+                width: 80%;
+                height: max-content;
+                max-width: 800px;
+            }
 
-			@media (max-width: 1000px) {
-				grid-template-columns: 1fr;
-				grid-template-rows: auto auto auto auto;
+            @media (max-width: 1000px) {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
 
-				.home-profile {
-					justify-self: center;
-				}
+                .home-profile {
+                    justify-self: center;
+                }
 
-				.home-about {
-					width: 90%;
-					height: auto;
+                .home-about {
+                    width: 90%;
+                    height: auto;
 
-					font-size: 16px;
-				}
+                    font-size: 16px;
+                }
 
-				.home-top-repo {
-					margin-bottom: 30px;
+                .home-top-repo {
+                    margin-bottom: 30px;
 
-					.repo-name {
-						font-size: 20px;
-					}
+                    .repo-name {
+                        font-size: 20px;
+                    }
 
-					.repo-desc,
-					.repo-info span {
-						font-size: 18px;
-					}
-				}
-			}
-		}
-	}
+                    .repo-desc,
+                    .repo-info span {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
 
-	&.light {
-		background-color: $light-background;
-		color: $light-foreground;
-	}
+    &.light {
+        background-color: $light-background;
+        color: $light-foreground;
+    }
 
-	&.dark {
-		background-color: $dark-background;
-		color: $dark-foreground;
-	}
+    &.dark {
+        background-color: $dark-background;
+        color: $dark-foreground;
+    }
 }
 </style>

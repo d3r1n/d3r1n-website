@@ -1,15 +1,12 @@
 <template>
-	<div
-		class="page-widget projects-page"
-		:class="{ light: theme.theme, dark: !theme.theme }"
-	>
-		<Navbar />
+    <div class="page-widget projects-page" :class="{ light: theme.theme, dark: !theme.theme }">
+        <Navbar />
 
-		<div class="content">
-			<ProjectsRepos />
-			<ProjectsLastCommit />
-		</div>
-	</div>
+        <div class="content">
+            <ProjectsRepos />
+            <ProjectsLastCommit />
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -24,20 +21,20 @@ const theme = useTheme();
 
 <style lang="scss">
 .projects-page {
-	&.light {
-		background-color: $light-background;
-	}
+    &.light {
+        background-color: $light-background;
+    }
 
-	&.dark {
-		background-color: $dark-background;
-	}
+    &.dark {
+        background-color: $dark-background;
+    }
 }
 
 .projects-repos {
-	margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .last-commit {
-	margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 </style>

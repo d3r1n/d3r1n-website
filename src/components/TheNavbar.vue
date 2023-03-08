@@ -1,23 +1,23 @@
 <template>
-	<div class="navbar" :class="{'light': theme.theme, 'dark': !theme.theme}">
-		<router-link :to="{name: 'home'}" class="navbar-button" v-html="smile">
-		</router-link>
+    <div class="navbar" :class="{ 'light': theme.theme, 'dark': !theme.theme }">
+        <router-link :to="{ name: 'home' }" class="navbar-button" v-html="smile">
+        </router-link>
 
-		<router-link :to="{name: 'music'}" class="navbar-button" v-html="music">
-		</router-link>
+        <router-link :to="{ name: 'music' }" class="navbar-button" v-html="music">
+        </router-link>
 
-		<router-link :to="{name: 'projects'}" class="navbar-button" v-html="git_branch">
-		</router-link>
+        <router-link :to="{ name: 'projects' }" class="navbar-button" v-html="git_branch">
+        </router-link>
 
-		<router-link :to="{name: 'contact'}" class="navbar-button" v-html="at_sign">
-		</router-link>
+        <router-link :to="{ name: 'contact' }" class="navbar-button" v-html="at_sign">
+        </router-link>
 
-		<a href="https://blog.d3r1n.com/" class="navbar-button" v-html="blog"></a>
+        <a href="https://blog.d3r1n.com/" class="navbar-button" v-html="blog"></a>
 
-		<button class="navbar-button" v-on:click="theme.toggle_theme" @click="play_theme_click" v-html="moon">
-		</button>
+        <button class="navbar-button" v-on:click="theme.toggle_theme" @click="play_theme_click" v-html="moon">
+        </button>
 
-	</div>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -37,120 +37,121 @@ import theme_button_click from "@/assets/audio/button-latch-click.wav";
 const theme = useTheme();
 
 function play_button_click() {
-	const audio = new Audio(button_click);
-	audio.play();
+    const audio = new Audio(button_click);
+    audio.play();
 }
 
 function play_theme_click() {
-	const audio = new Audio(theme_button_click);
-	audio.play();
+    const audio = new Audio(theme_button_click);
+    audio.play();
 }
 
 onMounted(() => {
-	const buttons = document.querySelectorAll(".navbar-button");
+    const buttons = document.querySelectorAll(".navbar-button");
 
-	buttons.forEach((button) => {
-		button.addEventListener("click", play_button_click);
-	});
+    buttons.forEach((button) => {
+        button.addEventListener("click", play_button_click);
+    });
 });
 
 </script>
 
 <style lang="scss">
 .navbar {
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
-	width: 90%;
-	height: 100%;
-	margin-top: 15px;
-	overflow: visible;
+    width: 90%;
+    height: 100%;
+    margin-top: 15px;
+    overflow: visible;
 
-	.navbar-button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+    .navbar-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-		width: 75px;
-		height: 75px;
+        width: 75px;
+        height: 75px;
 
-		border-radius: 10px;
-		transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        border-radius: 10px;
+        transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
-		svg {
-			width: 50px;
-			height: 50px;
-			transition: stroke 0.2s ease-in-out;
-		}
+        svg {
+            width: 50px;
+            height: 50px;
+            transition: stroke 0.2s ease-in-out;
+        }
 
-		margin-right:15px;
+        margin-right:15px;
 
-		&:nth-child(5) {
-			margin-right: 0;
-		}
+        &:nth-child(5) {
+            margin-right: 0;
+        }
 
-		&:hover {
-			cursor: pointer;
-			transform: scale(1.05);
-		}
-	}
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+    }
 
-	.navbar-button:last-child {
-		margin-right: 0;
-		margin-left: auto;
-	}
+    .navbar-button:last-child {
+        margin-right: 0;
+        margin-left: auto;
+    }
 
-	&.light, &.dark {
-		.navbar-button:hover {
-			background-color: rgba(120, 104, 230, 0.5);
-		}
-	}
+    &.light,
+    &.dark {
+        .navbar-button:hover {
+            background-color: rgba(120, 104, 230, 0.5);
+        }
+    }
 
-	&.light {
-		.navbar-button {
-			background-color: $light-secondary;
-			
-			svg {
-				stroke: $light-foreground;
-			}
-		}
-	}
+    &.light {
+        .navbar-button {
+            background-color: $light-secondary;
 
-	&.dark {
-		.navbar-button {
-			background-color: $dark-secondary;
-			
-			svg {
-				stroke: $dark-foreground;
-			}
-		}
-	}
+            svg {
+                stroke: $light-foreground;
+            }
+        }
+    }
+
+    &.dark {
+        .navbar-button {
+            background-color: $dark-secondary;
+
+            svg {
+                stroke: $dark-foreground;
+            }
+        }
+    }
 }
 
 @media (max-width: 1000px) {
-	.navbar {
-		width: 100%;
-		justify-content: space-evenly;
+    .navbar {
+        width: 100%;
+        justify-content: space-evenly;
 
-		margin-bottom: 30px;
+        margin-bottom: 30px;
 
-		.navbar-button {
-			width: 50px;
-			height: 50px;
+        .navbar-button {
+            width: 50px;
+            height: 50px;
 
-			svg {
-				width: 50%;
-				height: 50%;
-			}
+            svg {
+                width: 50%;
+                height: 50%;
+            }
 
-			margin-right: 0;
-		}
+            margin-right: 0;
+        }
 
-		.navbar-button:last-child {
-			margin-left: 0;
-		}
-	}
+        .navbar-button:last-child {
+            margin-left: 0;
+        }
+    }
 }
 </style>
