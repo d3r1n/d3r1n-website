@@ -56,6 +56,10 @@ onMounted(async () => {
     }
     interval_function();
     interval = setInterval(interval_function, 5000);
+    
+    // Test profile image if fails, use fallback image
+    let test_img = await fetch(presence.value.image_url)
+    if (test_img.status !== 200) presence.value.image_url = "/default-profile-image.png";
 });
 
 // Watch for presence changes
@@ -122,11 +126,6 @@ onBeforeUnmount(() => {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-            }
-            
-            img:before {
-                content: ' ';
-                background-image: url('/default-profile-image.png');
             }
         }
 
