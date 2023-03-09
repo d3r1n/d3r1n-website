@@ -45,7 +45,7 @@ const helper = new Discord(import.meta.env.VITE_DISCORD_ID)
 let interval: any;
 
 function img_fallback() {
-    document.querySelector(".avatar #avatar-frame img")[0].src = '/default-profile-image.png';
+    document.querySelector(".avatar #avatar-frame img").src = '/default-profile-image.png';
 }
 
 onMounted(async () => {
