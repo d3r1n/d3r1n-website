@@ -123,6 +123,11 @@ onBeforeUnmount(() => {
                 height: 100%;
                 object-fit: cover;
             }
+            
+            img:before {
+                content: ' ';
+                background-image: url('/default-profile-image.png');
+            }
         }
 
         #status_circle {
