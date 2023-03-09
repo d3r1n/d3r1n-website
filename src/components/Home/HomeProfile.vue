@@ -10,7 +10,7 @@
                     </clipPath>
                 </svg>
 
-                <img :src="presence.image_url" draggable="false" alt="Discord Profile Image" />
+                <img :src="presence.image_url" :onerror="img_fallback" draggable="false" alt="Discord Profile Image" />
             </div>
             <span id="status_circle" :style="{ 'backgroundColor': status_color }"></span>
         </div>
@@ -43,6 +43,10 @@ const status_color = ref("")
 const helper = new Discord(import.meta.env.VITE_DISCORD_ID)
 
 let interval: any;
+
+function img_fallback() {
+    document.querySelector(".avatar #avatar-frame img")[0].src = '/default-profile-image.png';
+}
 
 onMounted(async () => {
     // Set an interval to update presence every 500ms
