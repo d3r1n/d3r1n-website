@@ -49,7 +49,7 @@ onMounted(async () => {
     const interval_function = () => {
         helper.get_presence().then((_presence) => {
             // Update Presence
-            presence.presence = _presence;
+            presence.set_presence(_presence)
         }).catch((err: DiscordError) => {
             console.error(err);
         });
@@ -59,7 +59,8 @@ onMounted(async () => {
     
     // Test profile image if fails, use fallback image
     let test_img = await fetch(presence.value.image_url)
-    if (test_img.status !== 200) presence.value.image_url = "/default-profile-image.png";
+    console.log(presence)
+    if (test_img.status !== 200) presence.presence.value.image_url = "/default-profile-image.png";
 });
 
 // Watch for presence changes
