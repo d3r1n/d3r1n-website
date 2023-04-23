@@ -1,7 +1,7 @@
 version = 1
 
 [[analyzers]]
-name = "typescript"
+name = "javascript"
 
   [analyzers.meta]
   plugins = ["vue"]
