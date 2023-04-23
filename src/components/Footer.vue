@@ -35,7 +35,7 @@ const getHash = async () => {
     } catch (err) {
         if (err instanceof GitHubError) {
             console.error(err)
-            setTimeout(getHash, 1000)
+            setTimeout(getHash, 10000)
         } else {
             throw err
         }

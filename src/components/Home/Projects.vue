@@ -54,7 +54,7 @@ const getRepos = async () => {
     } catch (err) {
         if (err instanceof GitHubError) {
             console.error(err);
-            setTimeout(getRepos, 1000);
+            setTimeout(getRepos, 10000);
         } else {
             throw err;
         }
