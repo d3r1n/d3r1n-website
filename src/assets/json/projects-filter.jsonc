@@ -1,0 +1,24 @@
+{
+    "projects": [
+        {
+            "raw-name": "d3r1n-website",
+            "name": "Portfolio",
+            "description": "This website, built with Vue3, TypeScript, Vite and SCSS."
+        },
+        {
+            "raw-name": "dotman",
+            "name": "Dotman",
+            "description": "A simple dotfile manager."
+        },
+        {
+            "raw-name": "brainsuck",
+            "name": "Brainsuck",
+            "description": "Advanced Brainfuck repl/interpreter/compiler with optimizations."
+        },
+        {
+            "raw-name": "AstroX",
+            "name": "AstroX",
+            "description": "Asteroids clone written in C++ using Raylib."
+        }
+    ]
+}

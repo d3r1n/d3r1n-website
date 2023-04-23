@@ -1,0 +1,162 @@
+@import "./theme.scss";
+@import "./variables.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: unset;
+  background: unset;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.font-fira-code {
+  font-family: 'Fira Code', monospace;
+}
+
+.font-roboto-slab {
+  font-family: 'Roboto Slab', serif;
+}
+
+.small-seperator {
+  width: 3px;
+  height: 1.5rem;
+  border-radius: 5rem;
+
+  background: var(--surface0);
+}
+
+.dark {
+  --base: #{$ctp-frappe-base};
+  --mantle: #{$ctp-frappe-mantle};
+  --crust: #{$ctp-frappe-crust};
+  --surface0: #{$ctp-frappe-surface0};
+  --surface1: #{$ctp-frappe-surface1};
+  --surface2: #{$ctp-frappe-surface2};
+  --overlay0: #{$ctp-frappe-overlay0};
+  --overlay1: #{$ctp-frappe-overlay1};
+  --overlay2: #{$ctp-frappe-overlay2};
+  --subtext0: #{$ctp-frappe-subtext0};
+  --subtext1: #{$ctp-frappe-subtext1};
+  --text: #{$ctp-frappe-text};
+  --rosewater: #{$ctp-frappe-rosewater};
+  --flamingo: #{$ctp-frappe-flamingo};
+  --pink: #{$ctp-frappe-pink};
+  --mauve: #{$ctp-frappe-mauve};
+  --red: #{$ctp-frappe-red};
+  --maroon: #{$ctp-frappe-maroon};
+  --peach: #{$ctp-frappe-peach};
+  --yellow: #{$ctp-frappe-yellow};
+  --green: #{$ctp-frappe-green};
+  --teal: #{$ctp-frappe-teal};
+  --sky: #{$ctp-frappe-sky};
+  --sapphire: #{$ctp-frappe-sapphire};
+  --blue: #{$ctp-frappe-blue};
+  --lavender: #{$ctp-frappe-lavender};
+
+  --base-raw: #{$ctp-frappe-base-raw};
+  --mantle-raw: #{$ctp-frappe-mantle-raw};
+  --crust-raw: #{$ctp-frappe-crust-raw};
+  --surface0-raw: #{$ctp-frappe-surface0-raw};
+  --surface1-raw: #{$ctp-frappe-surface1-raw};
+  --surface2-raw: #{$ctp-frappe-surface2-raw};
+  --overlay0-raw: #{$ctp-frappe-overlay0-raw};
+  --overlay1-raw: #{$ctp-frappe-overlay1-raw};
+  --overlay2-raw: #{$ctp-frappe-overlay2-raw};
+  --subtext0-raw: #{$ctp-frappe-subtext0-raw};
+  --subtext1-raw: #{$ctp-frappe-subtext1-raw};
+  --text-raw: #{$ctp-frappe-text-raw};
+  --rosewater-raw: #{$ctp-frappe-rosewater-raw};
+  --flamingo-raw: #{$ctp-frappe-flamingo-raw};
+  --pink-raw: #{$ctp-frappe-pink-raw};
+  --mauve-raw: #{$ctp-frappe-mauve-raw};
+  --red-raw: #{$ctp-frappe-red-raw};
+  --maroon-raw: #{$ctp-frappe-maroon-raw};
+  --peach-raw: #{$ctp-frappe-peach-raw};
+  --yellow-raw: #{$ctp-frappe-yellow-raw};
+  --green-raw: #{$ctp-frappe-green-raw};
+  --teal-raw: #{$ctp-frappe-teal-raw};
+  --sky-raw: #{$ctp-frappe-sky-raw};
+  --sapphire-raw: #{$ctp-frappe-sapphire-raw};
+  --blue-raw: #{$ctp-frappe-blue-raw};
+  --lavender-raw: #{$ctp-frappe-lavender-raw};
+}
+
+.light {
+  --base: #{$ctp-latte-base};
+  --mantle: #{$ctp-latte-mantle};
+  --crust: #{$ctp-latte-crust};
+  --surface0: #{$ctp-latte-surface0};
+  --surface1: #{$ctp-latte-surface1};
+  --surface2: #{$ctp-latte-surface2};
+  --overlay0: #{$ctp-latte-overlay0};
+  --overlay1: #{$ctp-latte-overlay1};
+  --overlay2: #{$ctp-latte-overlay2};
+  --subtext0: #{$ctp-latte-subtext0};
+  --subtext1: #{$ctp-latte-subtext1};
+  --text: #{$ctp-latte-text};
+  --rosewater: #{$ctp-latte-rosewater};
+  --flamingo: #{$ctp-latte-flamingo};
+  --pink: #{$ctp-latte-pink};
+  --mauve: #{$ctp-latte-mauve};
+  --red: #{$ctp-latte-red};
+  --maroon: #{$ctp-latte-maroon};
+  --peach: #{$ctp-latte-peach};
+  --yellow: #{$ctp-latte-yellow};
+  --green: #{$ctp-latte-green};
+  --teal: #{$ctp-latte-teal};
+  --sky: #{$ctp-latte-sky};
+  --sapphire: #{$ctp-latte-sapphire};
+  --blue: #{$ctp-latte-blue};
+  --lavender: #{$ctp-latte-lavender};
+
+  --base-raw: #{$ctp-latte-base-raw};
+  --mantle-raw: #{$ctp-latte-mantle-raw};
+  --crust-raw: #{$ctp-latte-crust-raw};
+  --surface0-raw: #{$ctp-latte-surface0-raw};
+  --surface1-raw: #{$ctp-latte-surface1-raw};
+  --surface2-raw: #{$ctp-latte-surface2-raw};
+  --overlay0-raw: #{$ctp-latte-overlay0-raw};
+  --overlay1-raw: #{$ctp-latte-overlay1-raw};
+  --overlay2-raw: #{$ctp-latte-overlay2-raw};
+  --subtext0-raw: #{$ctp-latte-subtext0-raw};
+  --subtext1-raw: #{$ctp-latte-subtext1-raw};
+  --text-raw: #{$ctp-latte-text-raw};
+  --rosewater-raw: #{$ctp-latte-rosewater-raw};
+  --flamingo-raw: #{$ctp-latte-flamingo-raw};
+  --pink-raw: #{$ctp-latte-pink-raw};
+  --mauve-raw: #{$ctp-latte-mauve-raw};
+  --red-raw: #{$ctp-latte-red-raw};
+  --maroon-raw: #{$ctp-latte-maroon-raw};
+  --peach-raw: #{$ctp-latte-peach-raw};
+  --yellow-raw: #{$ctp-latte-yellow-raw};
+  --green-raw: #{$ctp-latte-green-raw};
+  --teal-raw: #{$ctp-latte-teal-raw};
+  --sky-raw: #{$ctp-latte-sky-raw};
+  --sapphire-raw: #{$ctp-latte-sapphire-raw};
+  --blue-raw: #{$ctp-latte-blue-raw};
+  --lavender-raw: #{$ctp-latte-lavender-raw};
+}

@@ -1,0 +1,2 @@
+[] - Make the presence header link dynamic.
+[] - Finish the "Top Items" component.
