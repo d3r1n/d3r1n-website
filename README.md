@@ -14,24 +14,15 @@ You have to set the following environment variables in a `.env` file in the root
 > You can find an example .env file named `.env.example` in the root of the project.
 > You can rename it to `.env` and fill it with your data.
 
-| Variable                   | Description                      |
-| -------------------------- | -------------------------------- |
-| VITE_DISCORD_ID            | Your Discord user id             |
-| VITE_GITHUB_USERNAME       | Your GitHub username             |
-| VITE_SPOTIFY_CLIENT_ID     | Your Spotify app's client id     |
-| VITE_SPOTIFY_CLIENT_SECRET | Your Spotify app's client secret |
-| VITE_SPOTIFY_REFRESH_TOKEN | Your Spotify app's refresh token |
+| Variable                      | Description                           |
+| ----------------------------- | ------------------------------------- |
+| VITE_DC_ID                    | Your Discord user id                  |
+| VITE_GH_USERNAME              | Your GitHub username                  |
+| VITE_GH_WEBSITE_REPO          | Your GitHub website repository name   |
+| VITE_SPOTIFY_CLIENT_ID        | Your Spotify app's client id          |
+| VITE_SPOTIFY_CLIENT_SECRET    | Your Spotify app's client secret      |
+| VITE_SPOTIFY_REFRESH_TOKEN    | Your Spotify app's refresh token      |
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
----
-
-## Todo
-
--   [x] Add the Projects page
--   [x] Add a widget with latest commit's link
--   [ ] Optimize and refactor the css
--   [ ] Add the Contact page
--   [ ] Blog? (maybe)
