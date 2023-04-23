@@ -51,20 +51,18 @@ export class Spotify {
     }
 
     public async refreshAccessToken(): Promise<string> {
-        if (
-            this.accessToken !== null &&
-            this.accessToken.expiresIn > Date.now()
-        ) {
+        // Cache access token
+        
+        if (this.accessToken !== null && this.accessToken.expiresIn > Date.now()) {
             return this.accessToken.acccessToken;
         }
+        
 
         const response = await fetch("https://accounts.spotify.com/api/token", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
-                Authorization: `Basic ${btoa(
-                    `${this.clientId}:${this.clientSecret}`
-                )}`,
+                Authorization: `Basic ${window.btoa(`${this.clientId}:${this.clientSecret}`)}`,
             },
             body: `grant_type=refresh_token&refresh_token=${this.refreshToken}`,
         });
@@ -73,7 +71,7 @@ export class Spotify {
             const data = await response.json();
             this.accessToken = {
                 acccessToken: data.access_token,
-                expiresIn: Date.now() + data.expires_in,
+                expiresIn: Date.now() + data.expires_in * 1000,
             };
             return this.accessToken.acccessToken;
         } else {
