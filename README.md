@@ -1,37 +1,18 @@
-# My Portfolio
+# Vue 3 + TypeScript + Vite
 
-[![DeepSource](https://deepsource.io/gh/d3r1n/d3r1n-website.svg/?label=active+issues&show_trend=true&token=51s5DlzK0SxWSuBoJwGwhgvr)](https://deepsource.io/gh/d3r1n/d3r1n-website/?ref=repository-badge)
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-This is my portfolio website's last version. Made with Vue.js, TypeScript and SCSS.
+## Recommended IDE Setup
 
-## Environment Variables
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-You have to set the following environment variables in a `.env` file in the root of the project.
+## Type Support For `.vue` Imports in TS
 
-> for getting your Spotify refresh token, follow this guide:
-> https://benwiz.com/blog/create-spotify-refresh-token/
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-> You can find an example .env file named `.env.example` in the root of the project.
-> You can rename it to `.env` and fill it with your data.
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-| Variable                   | Description                      |
-| -------------------------- | -------------------------------- |
-| VITE_DISCORD_ID            | Your Discord user id             |
-| VITE_GITHUB_USERNAME       | Your GitHub username             |
-| VITE_SPOTIFY_CLIENT_ID     | Your Spotify app's client id     |
-| VITE_SPOTIFY_CLIENT_SECRET | Your Spotify app's client secret |
-| VITE_SPOTIFY_REFRESH_TOKEN | Your Spotify app's refresh token |
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
----
-
-## Todo
-
--   [x] Add the Projects page
--   [x] Add a widget with latest commit's link
--   [ ] Optimize and refactor the css
--   [ ] Add the Contact page
--   [ ] Blog? (maybe)
+1. Disable the built-in TypeScript Extension
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.

@@ -2,28 +2,26 @@
     <RouterView />
 </template>
 
-<script lang="ts"></script>
+<script setup lang="ts">
+import { useThemeStore } from './stores/theme';
 
-<style lang="scss">
-body,
-html,
-#app {
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    width: 100%;
-}
+const themeStore = useThemeStore();
+const theme = computed(() => themeStore.theme);
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "JetBrains Mono", monospace;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
+// watch effect
+watchEffect(() => {
+    if (theme.value) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+    }
+    else {
+        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
+    }
+// @ts-ignore
+});
+</script>
 
-body::-webkit-scrollbar {
-    display: none;
-}
+<style>
+   
 </style>
