@@ -1,11 +1,11 @@
 <template>
     <div class="profile w-9/10 gap-xl md:gap-sm md:w-auto md:max-w-2xl sc-flex-center flex-row flex-wrap-reverse font-nunito" v-if="user">
         <div class="profile-info w-64 md:w-1/2 flex flex-col flex-items-start flex-content-center gap-sm">
-            <span class="profile-info-name text-slate-800 dark:text-neutral-100 font-roboto font-bold text-5xl tracking-wide">
+            <span class="name text-slate-800 dark:text-neutral-100 font-roboto font-bold text-5xl tracking-wide">
                 d3r1n
             </span>
 
-            <div class="profile-info-presence sc-flex-center gap-sm text-lg">
+            <div class="presence sc-flex-center gap-sm text-lg">
                 <span class="status sc-flex-center">
                     <span class="status-icon inline-block w-4 h-4 rounded-full mr-1" 
                         :style="{ backgroundColor: statusColor }"></span>
@@ -16,7 +16,7 @@
                 <span class="custom-status text-slate-500 dark:text-neutral-400">{{ user.custom_status || randomQuote }}</span>
             </div>
 
-            <span class="profile-info-links w-full md:w-3/4 flex items-center justify-between">
+            <span class="links w-full md:w-3/4 flex items-center justify-between">
                 <a class="group sc-social-link" href="">
                     <AtSign class="sc-link-svg"/>
                 </a>

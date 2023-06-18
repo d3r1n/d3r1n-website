@@ -3,7 +3,7 @@
    <br>
    <Suspense>
       <Profile />
-
+      
       <template #fallback>
          <ProfileSkeleton />
       </template>
@@ -11,6 +11,11 @@
    <br>
    <br>
    <Navbar />
+   <br>
+   <br>
+   <Suspense>
+      <Spotify />
+   </Suspense>
 </template>
 
 <script setup lang="ts">
