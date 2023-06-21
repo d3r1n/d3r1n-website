@@ -29,20 +29,35 @@ export const useSpotifyStore = defineStore("spotify", () => {
         isPlaying.value = playing
         currentlyPlaying.value = current
         recentlyPlayed.value = recent
-        console.log("Updated Spotify")
     }
-
+    
     intervalFn()
-    setInterval(intervalFn, 5000)
+    setInterval(intervalFn, 10000)
 
     async function getTopAll() {
         return await spotify.getTopAll()
     }
 
+    // Async function that does not resolve until everything is loaded
+    // Used in the Spotify component for Suspense
+    // I know it's kinda hacky but it works :P
+    // TODO: better solution?
+    async function isLoaded(): Promise<void> {
+        return new Promise((resolve) => {
+            const interval = setInterval(() => {
+                if (currentlyPlaying.value || recentlyPlayed.value) {
+                    clearInterval(interval)
+                    resolve()
+                }
+            }, 100)
+        })
+    }
+    
     return {
         currentlyPlaying,
         isPlaying,
         recentlyPlayed,
+        isLoaded,
         getTopAll,
     }
 })
