@@ -25,7 +25,7 @@ export default defineConfig({
             dts: 'src/auto-imports.d.ts'
         }),
         Components({
-            dirs: ['src/components', 'src/views'],
+            dirs: ['src/components', 'src/views', 'src/assets/svg'],
             extensions: ['vue'],
             dts: 'src/components.d.ts'
         })

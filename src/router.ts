@@ -21,6 +21,12 @@ const routes = [
         path: '/songs',
         name: 'songs',
         component: () => import('./views/Songs.vue')
+    },
+    // 404
+    {
+        path: '/:pathMatch(.*)*',
+        name: '404',
+        component: () => import('./views/404.vue')
     }
 ]
 
