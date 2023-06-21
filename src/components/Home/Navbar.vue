@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar sc-flex-center gap-sm">
+    <div class="navbar sc-flex-center gap-4 w-max">
         <RouterLink :to="{name: nav}" 
             class="
                 nav-btn py-3 px-5 rd-full

@@ -1,11 +1,11 @@
 <template>
-    <div class="profile w-9/10 gap-xl md:gap-sm md:w-auto md:max-w-2xl sc-flex-center flex-row flex-wrap-reverse font-nunito" v-if="user">
-        <div class="profile-info w-64 md:w-1/2 flex flex-col flex-items-start flex-content-center gap-sm">
+    <div class="profile gap-5 md:gap-10 sc-flex-center flex-row flex-wrap-reverse font-nunito" v-if="user">
+    <div class="profile-info w-auto flex flex-col flex-items-start flex-content-center gap-4">
             <span class="name text-slate-800 dark:text-neutral-100 font-roboto font-bold text-5xl tracking-wide">
                 d3r1n
             </span>
 
-            <div class="presence sc-flex-center gap-sm text-lg">
+            <div class="presence sc-flex-center gap-3 text-lg">
                 <span class="status sc-flex-center">
                     <span class="status-icon inline-block w-4 h-4 rounded-full mr-1" 
                         :style="{ backgroundColor: statusColor }"></span>
@@ -16,7 +16,7 @@
                 <span class="custom-status text-slate-500 dark:text-neutral-400">{{ user.custom_status || randomQuote }}</span>
             </div>
 
-            <span class="links w-full md:w-3/4 flex items-center justify-between">
+            <span class="links w-full flex items-center justify-start gap-4">
                 <a class="group sc-social-link" href="">
                     <AtSign class="sc-link-svg"/>
                 </a>
@@ -40,11 +40,6 @@
 </template>
 
 <script setup lang="ts">
-import AtSign from '@/assets/svg/AtSign.vue';
-import GitHub from '@/assets/svg/GitHub.vue';
-import LinkedIn from '@/assets/svg/LinkedIn.vue';
-import Discord from '@/assets/svg/Discord.vue';
-
 import { useDiscordStore } from '@/stores/discord';
 // @ts-ignore
 import ColorThief from '@/assets/js/color-thief.mjs';
