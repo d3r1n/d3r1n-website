@@ -1,7 +1,7 @@
 <template>
     <div class="donation font-nunito w-max sc-flex-center flex-col p-5 rd-4 gap-2 bg-slate-300 dark:bg-neutral-800">
-        <h1 class="font-roboto tracking-wide text-3xl m-0 text-slate-800 dark:text-neutral-100">Donate Me</h1>
-        <p class="text-lg font-nunito w-64 text-slate-700 dark:text-neutral-200">
+        <h1 class="font-roboto tracking-wide text-2xl m-0 text-slate-800 dark:text-neutral-100">Donate Me</h1>
+        <p class="text-base font-nunito w-64 text-slate-700 dark:text-neutral-200">
             If you like my work and want to support me,
             you can donate to me via Ko-Fi.
             Your donation will go towards my college tuition,
