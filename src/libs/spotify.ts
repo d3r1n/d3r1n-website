@@ -139,9 +139,14 @@ export class Spotify {
 
     public async getTopAll(): Promise<TopAll>
     {
-        const tracksResponse = await this.request("top/tracks?limit=10", "GET")
-        if (tracksResponse.status !== 200) throw new SpotifyError("Error getting top tracks and artists", tracksResponse)
+        const responses = await Promise.all([
+            this.request("top/tracks?limit=10", "GET"),
+            this.request("top/artists?limit=10", "GET")
+        ])
 
+        const [tracksResponse, artistsResponse] = responses
+        
+        if (tracksResponse.status !== 200) throw new SpotifyError("Error getting top tracks and artists", tracksResponse)
         const tracks = (await tracksResponse.json())["items"]
         .map((x: any) => {
             return {
@@ -151,10 +156,8 @@ export class Spotify {
                 artist: (x["artists"] as Array<any>).map(x =>x["name"]).join(", ")
             }
         })
-
-        const artistsResponse = await this.request("top/artists?limit=10", "GET")
+        
         if (artistsResponse.status !== 200) throw new SpotifyError("Error getting top artists", artistsResponse)
-
         const artists = (await artistsResponse.json())["items"]
         .map((x: any) => {
             return {
