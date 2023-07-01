@@ -17,11 +17,7 @@ export default defineConfig({
         vue(),
         UnoCSS(),
         AutoImport({
-            imports: [
-                'vue',
-                'vue-router',
-                '@vueuse/core'
-            ],
+            imports: ['vue', 'vue-router', '@vueuse/core'],
             dts: 'src/auto-imports.d.ts'
         }),
         Components({

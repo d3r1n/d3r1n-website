@@ -18,7 +18,10 @@
     "devDependencies": {
         "@unocss/preset-typography": "^0.52.7",
         "@vitejs/plugin-vue": "^4.1.0",
+        "animate.css": "^4.1.1",
         "js-base64": "^3.7.5",
+        "prettier": "2.8.8",
+        "prettier-plugin-tailwind": "^2.2.12",
         "sass": "^1.62.1",
         "typescript": "^5.0.2",
         "unocss": "^0.52.4",
