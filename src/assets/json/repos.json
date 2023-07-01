@@ -1,0 +1,27 @@
+[
+    {
+        "repo": "dotman",
+        "name": "Dotman",
+        "description": "A powerful dotfile manager"
+    },
+    {
+        "repo": "brainsuck",
+        "name": "Brainsuck",
+        "description": "Toy programming language inspired by brainfuck"
+    },
+    {
+        "repo": "AstroX",
+        "name": "AstroX",
+        "description": "Simple asteroids game made with C++ & Raylib"
+    },
+    {
+        "repo": "Rust-CHIP-8",
+        "name": "CHIP-8 in Rust",
+        "description": "Chip-8 virtual machine made with Rust"
+    },
+    {
+        "repo": "d3r1n-website",
+        "name": "This Site",
+        "description": "My portfolio site made with Vite, TypeScript, Vue3 and UnoCSS"
+    }
+]

@@ -5,13 +5,13 @@
         height="24"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="none"
+        stroke=""
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="feather feather-arrow-left"
+        class="feather feather-arrow-down"
     >
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-        <polyline points="12 19 5 12 12 5"></polyline>
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <polyline points="19 12 12 19 5 12"></polyline>
     </svg>
 </template>
