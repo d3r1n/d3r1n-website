@@ -1,36 +1,32 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
-import { Spotify, Track } from "@/libs/spotify";
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import { Spotify, Track } from '@/libs/spotify'
 
 const env = import.meta.env
 
-const spotify = new Spotify(
-    env.VITE_SP_CLIENT_ID,
-    env.VITE_SP_CLIENT_SECRET,
-    env.VITE_SP_REFRESH_TOKEN
-)
+const spotify = new Spotify(env.VITE_SP_CLIENT_ID, env.VITE_SP_CLIENT_SECRET, env.VITE_SP_REFRESH_TOKEN)
 
-export const useSpotifyStore = defineStore("spotify", () => {
+export const useSpotifyStore = defineStore('spotify', () => {
     const isPlaying = ref<boolean>(false)
     const currentlyPlaying = ref<Track | null>(null)
     const recentlyPlayed = ref<Track | null>(null)
 
     // Intervals
     const intervalFn = async () => {
-        const promises = [
-            spotify.getIsPlaying(),
-            spotify.getCurrentlyPlaying(),
-            spotify.getRecentlyPlayed()
-        ]
+        // Refresh access token to prevent repeated refreshing
+        // for parallel requests
+        await spotify.refreshAccessToken()
+
+        const requests = [spotify.getIsPlaying(), spotify.getCurrentlyPlaying(), spotify.getRecentlyPlayed()]
         // @ts-ignore
-        const response: [boolean, Track | null, Track] = await Promise.all(promises)
+        const response: [boolean, Track | null, Track] = await Promise.all(requests)
         const [playing, current, recent] = response
 
         isPlaying.value = playing
         currentlyPlaying.value = current
         recentlyPlayed.value = recent
     }
-    
+
     intervalFn()
     setInterval(intervalFn, 10000)
 
@@ -52,12 +48,12 @@ export const useSpotifyStore = defineStore("spotify", () => {
             }, 100)
         })
     }
-    
+
     return {
         currentlyPlaying,
         isPlaying,
         recentlyPlayed,
         isLoaded,
-        getTopAll,
+        getTopAll
     }
 })
