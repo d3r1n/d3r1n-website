@@ -3,10 +3,10 @@
         <template v-slot:content>
             <div class="flex flex-col items-start justify-center gap-3">
                 <div
-                    class="w-full flex items-center justify-start gap-2 p-2 rd-2 shadow-lg bg-slate-200 dark:shadow-none dark:bg-neutral-800"
+                    class="rd-2 flex w-full items-center justify-start gap-2 bg-slate-200 p-2 shadow-lg dark:bg-neutral-800 dark:shadow-none"
                 >
                     <span
-                        class="px-2 py-1 text-xs bg-green-200 text-green-400 dark:bg-green-700 dark:text-green-500 rd-full"
+                        class="rd-full bg-green-200 px-2 py-1 text-xs text-green-400 dark:bg-green-700 dark:text-green-500"
                         >Done</span
                     >
                     <span class="text-base text-slate-700 dark:text-neutral-200"
@@ -14,13 +14,13 @@
                     >
                 </div>
 
-                <ArrowDown class="stroke-slate-300 dark:stroke-neutral-600 self-center" />
+                <ArrowDown class="self-center stroke-slate-300 dark:stroke-neutral-600" />
 
                 <div
-                    class="w-full flex items-center justify-start gap-2 p-2 rd-2 bg-slate-200 shadow-lg dark:shadow-none dark:bg-neutral-800"
+                    class="rd-2 flex w-full items-center justify-start gap-2 bg-slate-200 p-2 shadow-lg dark:bg-neutral-800 dark:shadow-none"
                 >
                     <span
-                        class="px-2 py-1 text-xs bg-yellow-200 text-yellow-400 dark:bg-yellow-700 dark:text-yellow-500 rd-full"
+                        class="rd-full bg-yellow-200 px-2 py-1 text-xs text-yellow-400 dark:bg-yellow-700 dark:text-yellow-500"
                         >Current</span
                     >
                     <span class="text-base text-slate-700 dark:text-neutral-200"
@@ -28,13 +28,13 @@
                     >
                 </div>
 
-                <ArrowDown class="stroke-slate-300 dark:stroke-neutral-600 self-center" />
+                <ArrowDown class="self-center stroke-slate-300 dark:stroke-neutral-600" />
 
                 <div
-                    class="w-full flex items-center justify-start gap-2 p-2 rd-2 bg-slate-200 shadow-lg dark:shadow-none dark:bg-neutral-800"
+                    class="rd-2 flex w-full items-center justify-start gap-2 bg-slate-200 p-2 shadow-lg dark:bg-neutral-800 dark:shadow-none"
                 >
                     <span
-                        class="px-2 py-1 text-xs bg-blue-200 text-blue-400 dark:bg-blue-700 dark:text-blue-500 rd-full"
+                        class="rd-full bg-blue-200 px-2 py-1 text-xs text-blue-400 dark:bg-blue-700 dark:text-blue-500"
                         >Next</span
                     >
                     <span class="text-base text-slate-700 dark:text-neutral-200"

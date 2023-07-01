@@ -1,6 +1,6 @@
 <template>
     <div class="home sc-page sc-flex-center">
-        <div class="content w-9/10 mb-sm mt-sm flex flex-col justify-start items-center gap-5xl">
+        <div class="content w-9/10 mb-sm mt-sm gap-5xl flex flex-col items-center justify-start">
             <Suspense>
                 <Profile />
 

@@ -1,34 +1,36 @@
 <template>
-    <div class="sc-flex-center flex-col gap-5 w-full md:max-w-96 font-nunito">
+    <div class="repo sc-flex-center flex-col md:flex-row">
         <div
-            class="flex flex-col items-start justify-center gap-5 w-full p-5 rd-2 bg-slate-100 dark:bg-neutral-900 shadow-md dark:shadow-none"
+            class="content rd-2 font-nunito flex h-auto w-full flex-col items-start justify-start gap-5 bg-slate-100 p-5 dark:bg-neutral-900 md:h-64 md:w-96"
         >
-            <h1 class="m-0 font-roboto tracking-wide font-bold text-2xl text-slate-800 dark:text-neutral-100">
-                {{ name }}
-            </h1>
-            <p class="m-0 text-base text-slate-700 dark:text-neutral-200">{{ computedDescription }}</p>
-        </div>
+            <div class="header sc-flex-center w-full gap-2">
+                <span class="name basis-3/5 text-2xl font-bold text-slate-800">{{ name }}</span>
 
-        <div class="sc-flex-center gap-5 w-full text-green-500 font-normal">
-            <div class="sc-flex-center gap-5 p-3 rd-2 text-lg bg-green-100 dark:bg-green-900">
-                <span class="sc-flex-center gap-2">
-                    <Star class="stroke-green-400 dark:stroke-green-600" />
-                    {{ stars }}
-                </span>
-
-                <span class="sc-flex-center gap-2">
-                    <Branch class="stroke-green-400 dark:stroke-green-600" />
-                    {{ forks }}
-                </span>
+                <div
+                    class="stats rd-2 flex basis-2/5 items-center justify-evenly bg-green-200 p-2 text-xl text-green-500"
+                >
+                    <span class="stars sc-flex-center gap-2">
+                        <Star class="h-6 w-6 stroke-green-400" />
+                        {{ stars }}
+                    </span>
+                    <span class="forks sc-flex-center gap-2">
+                        <Branch class="h-6 w-6 stroke-green-400" />
+                        {{ forks }}
+                    </span>
+                </div>
             </div>
 
-            <a
-                :href="url"
-                target="_blank"
-                class="p-3 rd-2 bg-blue-100 dark:bg-blue-900 transition-all duration-300 hover:bg-blue-200 dark:hover:bg-blue-800 grow sc-flex-center after:ml-1 after:content-['↗'] no-underline text-lg font-bold text-blue-600 dark:text-blue-400"
-                >Go</a
-            >
+            <span class="description break-words text-lg font-light text-slate-700 md:w-4/5">{{
+                computedDescription
+            }}</span>
         </div>
+
+        <a
+            :href="url"
+            class="sc-flex-center rd-full outline-10 relative bottom-2 z-20 bg-blue-100 p-3 outline outline-slate-50 ring-0 transition-all duration-300 hover:outline-transparent hover:ring-8 hover:ring-blue-200 md:bottom-0 md:right-8"
+        >
+            <ArrowUpRight class="h-12 w-12 stroke-blue-500" />
+        </a>
     </div>
 </template>
 
@@ -59,7 +61,7 @@
 
     const computedDescription = computed(() => {
         if (!props.description) return 'No description provided.'
-        return props.description.length > 100 ? props.description.slice(0, 100) + '...' : props.description
+        return props.description.length > 120 ? props.description.slice(0, 120) + '...' : props.description
     })
 </script>
 

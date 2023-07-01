@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
         About: typeof import('./views/About.vue')['default']
         ArrowDown: typeof import('./assets/svg/ArrowDown.vue')['default']
         ArrowLeft: typeof import('./assets/svg/ArrowLeft.vue')['default']
+        ArrowUpRight: typeof import('./assets/svg/ArrowUpRight.vue')['default']
         AtSign: typeof import('./assets/svg/AtSign.vue')['default']
         BackButton: typeof import('./components/shared/BackButton.vue')['default']
         Branch: typeof import('./assets/svg/Branch.vue')['default']

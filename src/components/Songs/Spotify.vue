@@ -1,13 +1,13 @@
 <template>
-    <div class="spotify sc-flex-center gap-5 font-nunito flex-wrap" v-if="currentlyPlaying || recentlyPlayed">
+    <div class="spotify sc-flex-center font-nunito flex-wrap gap-5" v-if="currentlyPlaying || recentlyPlayed">
         <img
             :src="currentlyPlaying?.coverArt || recentlyPlayed?.coverArt"
             alt="Cover Art"
-            class="spotify-cover rd-2 w-48 h-48 shadow-lg shadow-zinc-400 dark:shadow-none"
+            class="spotify-cover rd-2 h-48 w-48 shadow-lg shadow-zinc-400 dark:shadow-none"
         />
 
         <div
-            class="spotify-info items-center md:items-start w-max flex justify-center flex-col gap-3 text-slate-700 dark:text-neutral-300 text-lg"
+            class="spotify-info flex w-max flex-col items-center justify-center gap-3 text-lg text-slate-700 dark:text-neutral-300 md:items-start"
         >
             <Link
                 :href="link"
@@ -15,11 +15,11 @@
                 color="text-slate-700 dark:text-neutral-200"
                 class="text-2xl font-medium"
             />
-            <span class="artist mb-1 text-md font-light">
+            <span class="artist text-md mb-1 font-light">
                 {{ currentlyPlaying?.artist || recentlyPlayed?.artist }}
             </span>
             <span
-                class="sc-flex-center gap-2 rd-2 p-2 bg-sky-100 dark:bg-sky-900 shadow-md shadow-sky-200 dark:shadow-none"
+                class="sc-flex-center rd-2 gap-2 bg-sky-100 p-2 shadow-md shadow-sky-200 dark:bg-sky-900 dark:shadow-none"
             >
                 <Music class="stroke-sky-400 dark:stroke-sky-600" />
 

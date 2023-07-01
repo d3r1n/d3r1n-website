@@ -1,41 +1,41 @@
 <template>
-    <div class="profile gap-5 md:gap-10 sc-flex-center flex-row flex-wrap-reverse font-nunito" v-if="user">
-        <div class="profile-info w-auto flex flex-col flex-items-start flex-content-center gap-4">
-            <span class="name text-slate-800 dark:text-neutral-100 font-roboto font-bold text-5xl tracking-wide">
+    <div class="profile sc-flex-center font-nunito flex-row flex-wrap-reverse gap-5 md:gap-10" v-if="user">
+        <div class="profile-info flex-items-start flex-content-center flex w-auto flex-col gap-4">
+            <span class="name font-roboto text-5xl font-bold tracking-wide text-slate-800 dark:text-neutral-100">
                 d3r1n
             </span>
 
             <div class="presence sc-flex-center gap-3 text-lg">
                 <span class="status sc-flex-center">
                     <span
-                        class="status-icon inline-block w-4 h-4 rounded-full mr-1"
+                        class="status-icon mr-1 inline-block h-4 w-4 rounded-full"
                         :style="{ backgroundColor: statusColor }"
                     ></span>
                     <span class="status-text text-slate-700 dark:text-neutral-400">{{ user.status }}</span>
                 </span>
 
-                <span class="divider inline-block w-1 h-1 rounded-full bg-slate-300 dark:bg-neutral-900"></span>
+                <span class="divider inline-block h-1 w-1 rounded-full bg-slate-300 dark:bg-neutral-900"></span>
                 <span class="custom-status text-slate-500 dark:text-neutral-400">{{
                     user.custom_status || randomQuote
                 }}</span>
             </div>
 
-            <span class="links w-full flex items-center justify-start gap-4">
+            <span class="links flex w-full items-center justify-start gap-4">
                 <a
                     v-for="link in links"
                     :href="link.href"
                     target="_blank"
-                    class="group sc-flex-center p-2 rd-2 bg-slate-200 dark:bg-neutral-800 transition-all duration-300 hover:bg-slate-300 dark:hover:bg-neutral-700"
+                    class="sc-flex-center rd-2 group bg-slate-200 p-2 transition-all duration-300 hover:bg-slate-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
                 >
                     <component
                         :is="link.icon"
-                        class="w-7 h-7 stroke-slate-400 dark:stroke-neutral-700 group-hover:stroke-slate-500 dark:group-hover:stroke-neutral-600"
+                        class="h-7 w-7 stroke-slate-400 group-hover:stroke-slate-500 dark:stroke-neutral-700 dark:group-hover:stroke-neutral-600"
                     />
                 </a>
             </span>
         </div>
 
-        <img :src="user.avatar" alt="" class="profile-avatar rd-2 w-64 h-64 shadow-lg shadow-avatar-color" />
+        <img :src="user.avatar" alt="" class="profile-avatar rd-2 shadow-avatar-color h-64 w-64 shadow-lg" />
     </div>
 </template>
 
