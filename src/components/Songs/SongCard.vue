@@ -4,7 +4,7 @@
 
         <!-- Background Overlay -->
         <div
-            class="absolute left-0 top-0 z-10 h-full w-full bg-slate-100 bg-opacity-0 transition-all duration-500 group-hover:bg-opacity-80 group-hover:backdrop-blur"
+            class="absolute left-0 top-0 z-10 h-full w-full bg-slate-100 bg-opacity-0 transition-all duration-500 group-hover:bg-opacity-60 group-hover:backdrop-blur dark:bg-neutral-900 dark:bg-opacity-0"
         ></div>
 
         <div

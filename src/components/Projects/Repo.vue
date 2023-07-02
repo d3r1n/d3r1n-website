@@ -1,7 +1,7 @@
 <template>
     <div class="repo sc-flex-center flex-col md:flex-row">
         <div
-            class="content rd-2 font-nunito flex h-auto w-full flex-col items-start justify-start gap-5 bg-slate-100 p-5 dark:bg-neutral-900 md:h-64 md:w-96"
+            class="content rd-2 font-nunito flex h-auto w-full flex-col items-start justify-start gap-3 bg-slate-100 p-5 dark:bg-neutral-900 md:h-64 md:w-96"
         >
             <div class="header sc-flex-center w-full gap-2">
                 <span class="name basis-3/5 text-2xl font-bold text-slate-800 dark:text-neutral-200">{{ name }}</span>
@@ -28,7 +28,7 @@
 
         <a
             :href="url"
-            class="sc-flex-center rd-full outline-10 relative bottom-5 z-20 bg-blue-100 p-3 outline outline-slate-50 ring-0 transition-all duration-300 hover:outline-transparent hover:ring-8 hover:ring-blue-200 dark:bg-blue-900 dark:outline-neutral-950 dark:hover:ring-sky-800 md:bottom-0 md:right-5"
+            class="sc-flex-center rd-full outline-10 relative bottom-5 z-20 bg-blue-100 p-3 outline outline-slate-50 ring-0 transition-all duration-300 hover:outline-transparent hover:ring-10 hover:ring-blue-200 dark:bg-blue-900 dark:outline-neutral-950 dark:hover:ring-sky-800 md:bottom-0 md:right-5"
         >
             <ArrowUpRight class="h-12 w-12 stroke-blue-500" />
         </a>
