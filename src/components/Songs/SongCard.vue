@@ -1,6 +1,6 @@
 <template>
-    <div class="song-card rd-2 group relative h-64 w-64 flex-col overflow-hidden">
-        <img :src="song.cover" class="z-0 h-full w-full object-cover" />
+    <div class="track-card rd-2 group relative h-56 w-56 flex-col overflow-hidden" v-if="track || artist">
+        <img :src="track?.coverArt || artist?.image" class="z-0 h-full w-full object-cover" />
 
         <!-- Background Overlay -->
         <div
@@ -8,26 +8,26 @@
         ></div>
 
         <div
-            class="song-info font-nunito duration-800 absolute bottom-5 left-5 z-20 flex translate-y-20 flex-col items-start justify-center gap-3 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+            class="track-info font-nunito duration-800 absolute bottom-5 left-5 z-20 flex translate-y-20 flex-col items-start justify-center gap-3 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
         >
-            <Link :label="song.name" :href="song.url" class="text-xl text-slate-800 dark:text-neutral-100" />
-            <span class="text-lg font-light text-slate-700 dark:text-neutral-400">{{ song.artist }}</span>
+            <Link :label="shorten(artist?.name || track?.name, 20)" :href="track?.link || artist?.link" class="text-xl text-slate-800 dark:text-neutral-100" />
+            <span class="text-lg font-light text-slate-700 dark:text-neutral-400" v-if="track">{{ shorten(track.artist, 20) }}</span>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-    interface Song {
-        name: string
-        artist: string
-        cover: string
-        url: string
-    }
+import { Track, Artist } from '@/libs/spotify';
 
-    defineProps({
-        song: {
-            type: Object as PropType<Song>,
-            required: true
-        }
-    })
+// either track or artist
+defineProps<{
+    track?: Track
+    artist?: Artist
+}>()
+
+function shorten(str: string | undefined, maxLen: number) {
+    if (!str) return '';
+    if (str.length <= maxLen) return str;
+    return `${str.substring(0, maxLen - 3)}...`;
+}
 </script>

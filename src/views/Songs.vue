@@ -1,12 +1,13 @@
 <template>
-    <SongCard
-        :song="{
-            name: 'Bubblegum',
-            artist: 'Nigga',
-            cover: 'https://i.scdn.co/image/ab67616d0000b2733875cbb6fd3a71d6f52f424a',
-            url: 'example.com'
-        }"
-    />
+    <div class="sc-page sc-flex-center">
+        <BackButton name="Songs" class="absolute left-5 top-5" />
+
+        <div class="content sc-flex-center w-9/10 mt-25 mb-5 flex-col gap-10">
+            <Suspense>
+                <SongList />
+            </Suspense>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts"></script>
