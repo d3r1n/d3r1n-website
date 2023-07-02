@@ -1,11 +1,10 @@
 <template>
-    <div class="project-skeleton sc-flex-center font-nunito w-64 flex-col gap-5 md:w-96" v-for="_ in countRepo">
-        <div class="name-desc rd-2 h-32 w-full bg-slate-100 dark:bg-neutral-900"></div>
+    <div class="project-skeleton sc-flex-center font-nunito w-full flex-col md:flex-row" v-for="_ in countRepo">
+        <div class="box rd-2 h-60 w-full bg-slate-100 dark:bg-neutral-900 md:w-80"></div>
 
-        <div class="info sc-flex-center w-full gap-5">
-            <div class="stars rd-2 h-12 basis-1/3 bg-slate-100 dark:bg-neutral-900"></div>
-            <div class="forks rd-2 h-12 basis-2/3 bg-slate-100 dark:bg-neutral-900"></div>
-        </div>
+        <div
+            class="button w-18 h-18 rd-full outline-10 relative bottom-5 z-20 bg-slate-100 outline outline-slate-50 after:content-['\200B'] dark:bg-neutral-900 dark:outline-neutral-950 md:bottom-0 md:right-5"
+        ></div>
     </div>
 </template>
 

@@ -20,14 +20,15 @@
                 </div>
             </div>
 
-            <span class="description mb-5 break-words text-lg font-light text-slate-700 dark:text-neutral-300 md:w-4/5 md:m-0">{{
-                computedDescription
-            }}</span>
+            <span
+                class="description mb-5 break-words text-lg font-light text-slate-700 dark:text-neutral-300 md:m-0 md:w-4/5"
+                >{{ computedDescription }}</span
+            >
         </div>
 
         <a
             :href="url"
-            class="sc-flex-center rd-full outline-10 relative bottom-5 z-20 bg-blue-100 p-3 outline outline-slate-50 ring-0 transition-all duration-300 hover:outline-transparent hover:ring-8 hover:ring-blue-200 md:bottom-0 md:right-5 dark:outline-neutral-950 dark:bg-blue-900 dark:hover:ring-sky-800"
+            class="sc-flex-center rd-full outline-10 relative bottom-5 z-20 bg-blue-100 p-3 outline outline-slate-50 ring-0 transition-all duration-300 hover:outline-transparent hover:ring-8 hover:ring-blue-200 dark:bg-blue-900 dark:outline-neutral-950 dark:hover:ring-sky-800 md:bottom-0 md:right-5"
         >
             <ArrowUpRight class="h-12 w-12 stroke-blue-500" />
         </a>
