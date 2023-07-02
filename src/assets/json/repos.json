@@ -2,12 +2,12 @@
     {
         "repo": "dotman",
         "name": "Dotman",
-        "description": "A powerful dotfile manager"
+        "description": "A powerful dotfile manager for GNU/Linux. Written in Go"
     },
     {
         "repo": "brainsuck",
         "name": "Brainsuck",
-        "description": "Toy programming language inspired by brainfuck"
+        "description": "Toy programming language inspired by brainfuck. Written in Rust"
     },
     {
         "repo": "AstroX",
@@ -17,11 +17,11 @@
     {
         "repo": "Rust-CHIP-8",
         "name": "CHIP-8 in Rust",
-        "description": "Chip-8 virtual machine made with Rust"
+        "description": "⚡ BLAZING FAST ⚡ ⚠️ ☠️ Chip-8 virtual machine made with Rust"
     },
     {
         "repo": "d3r1n-website",
         "name": "This Site",
-        "description": "My portfolio site made with Vite, TypeScript, Vue3 and UnoCSS. gooby goober asadasdasdasdasdadasdasdadad adasd as asadasdasd  adadad adasdasdasdasd adasdasdada"
+        "description": "My portfolio site made with Vite, TypeScript, Vue3 and UnoCSS"
     }
 ]

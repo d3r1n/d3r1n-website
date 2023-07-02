@@ -19,11 +19,11 @@
                 {{ currentlyPlaying?.artist || recentlyPlayed?.artist }}
             </span>
             <span
-                class="sc-flex-center rd-2 gap-2 bg-sky-100 p-2 shadow-md shadow-sky-200 dark:bg-sky-900 dark:shadow-none"
+                class="sc-flex-center rd-2 gap-2 bg-emerald-100 p-2 shadow-md shadow-emerald-200 dark:bg-emerald-900 dark:shadow-none"
             >
-                <Music class="stroke-sky-400 dark:stroke-sky-600" />
+                <Music class="stroke-emerald-400 dark:stroke-emerald-600" />
 
-                <span id="spotify-text" class="text-base text-sky-400 dark:text-sky-600">
+                <span id="spotify-text" class="text-base text-emerald-400 dark:text-emerald-600">
                     {{ currentlyPlaying ? 'Currently playing on Spotify' : 'Recently Played on Spotify' }}
                 </span>
             </span>
