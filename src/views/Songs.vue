@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-useHead({
-    title: 'Songs',
-})
+    useHead({
+        title: 'Songs'
+    })
 </script>

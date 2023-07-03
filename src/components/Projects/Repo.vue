@@ -28,7 +28,7 @@
 
         <a
             :href="url"
-            class="sc-flex-center rd-full outline-10 relative bottom-5 z-20 bg-blue-100 p-3 outline outline-slate-50 ring-0 transition-all duration-300 hover:outline-transparent hover:ring-10 hover:ring-blue-200 dark:bg-blue-900 dark:outline-neutral-950 dark:hover:ring-sky-800 md:bottom-0 md:right-5"
+            class="sc-flex-center rd-full outline-10 hover:ring-10 relative bottom-5 z-20 bg-blue-100 p-3 outline outline-slate-50 ring-0 transition-all duration-300 hover:outline-transparent hover:ring-blue-200 dark:bg-blue-900 dark:outline-neutral-950 dark:hover:ring-sky-800 md:bottom-0 md:right-5"
         >
             <ArrowUpRight class="h-12 w-12 stroke-blue-500" />
         </a>
